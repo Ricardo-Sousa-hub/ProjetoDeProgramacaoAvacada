@@ -16,9 +16,9 @@ class TabelaBDDespesas(val db:SQLiteDatabase) {
 
     companion object{
         const val NOME_TABELA = "despesas"
+        const val TIPO_DESPESA = "tipo_despesa"
         const val DATA_DESPESA = "data_despesa"
         const val VALOR_DESPESA = "valor_despesa"
-        const val TIPO_DESPESA = "tipo_despesa"
         const val ID_CARRO = "id_carro"
     }
 

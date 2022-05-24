@@ -16,10 +16,10 @@ class TabelaBDCarros(val db:SQLiteDatabase) {
 
     companion object{
         const val NOME_TABELA = "carros"
-        const val ID_UTILIZADOR = "id_utilizador"
         const val DATA_INSERT = "data_introduzido"
         const val TIPO_COMBUSTIVEL = "tipo_combustivel"
         const val MODELO = "modelo"
+        const val ID_UTILIZADOR = "id_utilizador"
     }
 
 }
