@@ -3,10 +3,10 @@ package pt.ipg.projetofinal
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaBDDespesas(val db:SQLiteDatabase) {
+class TabelaBDDespesas(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
-    fun cria(){
-        db.execSQL("CREATE TABLE $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+    override fun cria(){
+        db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$TIPO_DESPESA TEXT NOT NULL," +
                 "$DATA_DESPESA TEXT NOT NULL," +
                 "$VALOR_DESPESA REAL NOT NULL," +

@@ -3,10 +3,10 @@ package pt.ipg.projetofinal
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaBDUtilizadores(val db: SQLiteDatabase) {
+class TabelaBDUtilizadores(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
-    fun cria(){
-        db.execSQL("CREATE TABLE $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+    override fun cria(){
+        db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$NOME TEXT NOT NULL," +
                 "$DATA_NASCIMENTO TEXT NOT NULL)")
     }
