@@ -5,11 +5,8 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class BDAppOpenHelper(
-    context: Context?,
-    name: String?,
-    factory: SQLiteDatabase.CursorFactory?,
-    version: Int
-) :SQLiteOpenHelper(context, name, factory, version) {
+    context: Context?
+) : SQLiteOpenHelper(context, NOME, null, VERSAO) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         requireNotNull(db)// if(db == null) return
@@ -23,4 +20,8 @@ class BDAppOpenHelper(
         TODO("Not yet implemented")
     }
 
+    companion object{
+        const val NOME = "carros.db" //Nome da base de dados
+        private const val VERSAO = 1
+    }
 }
