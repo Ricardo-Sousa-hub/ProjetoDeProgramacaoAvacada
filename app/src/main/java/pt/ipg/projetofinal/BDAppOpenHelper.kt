@@ -12,7 +12,10 @@ class BDAppOpenHelper(
         requireNotNull(db)// if(db == null) return
 
         TabelaBDUtilizadores(db).cria()
+        TabelaBDTipoCombustivel(db).cria()
+        TabelaBDModelos(db).cria()
         TabelaBDCarros(db).cria()
+        TabelaBDTipoDespesa(db).cria()
         TabelaBDDespesas(db).cria()
     }
 
