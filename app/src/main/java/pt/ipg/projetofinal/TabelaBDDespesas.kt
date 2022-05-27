@@ -7,16 +7,17 @@ class TabelaBDDespesas(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
     override fun cria(){
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$TIPO_DESPESA TEXT NOT NULL," +
+                "$ID_TIPO_DESPESA INTEGER NOT NULL," +
+                "FOREIGN KEY ($ID_TIPO_DESPESA) REFERENCES ${TabelaBDTipoDespesa.NOME_TABELA} (${BaseColumns._ID}) ON DELETE RESTRICT,"+
                 "$DATA_DESPESA TEXT NOT NULL," +
                 "$VALOR_DESPESA REAL NOT NULL," +
                 "$ID_CARRO INTEGER NOT NULL," +
-                "FOREIGN KEY ($ID_CARRO) REFERENCES ${TabelaBDCarros.NOME_TABELA}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+                "FOREIGN KEY ($ID_CARRO) REFERENCES ${TabelaBDCarros.NOME_TABELA} (${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
     companion object{
         const val NOME_TABELA = "despesas"
-        const val TIPO_DESPESA = "tipo_despesa"
+        const val ID_TIPO_DESPESA = "id_tipo_despesa"
         const val DATA_DESPESA = "data_despesa"
         const val VALOR_DESPESA = "valor_despesa"
         const val ID_CARRO = "id_carro"
