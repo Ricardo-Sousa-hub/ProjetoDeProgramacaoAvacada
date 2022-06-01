@@ -3,9 +3,9 @@ package pt.ipg.projetofinal
 import android.content.ContentValues
 
 data class Utilizador(
-    var id: Long,
     var nome: String,
-    var data_nascimento: String
+    var data_nascimento: String,
+    var id: Long = -1
     ) {
 
     fun toContentValues() : ContentValues{

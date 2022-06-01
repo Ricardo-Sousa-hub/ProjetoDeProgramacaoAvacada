@@ -3,9 +3,9 @@ package pt.ipg.projetofinal
 import android.content.ContentValues
 
 data class Modelo(
-    var id: Long,
     var nome: String,
-    var ano: String
+    var ano: String,
+    var id: Long = -1
 ) {
 
     fun toContentValues() : ContentValues{

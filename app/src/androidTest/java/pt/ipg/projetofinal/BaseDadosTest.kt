@@ -1,5 +1,7 @@
 package pt.ipg.projetofinal
 
+import android.database.sqlite.SQLiteDatabase
+import android.view.Display
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -18,6 +20,26 @@ import org.junit.Before
 class BaseDadosTest {
     fun appContext() = InstrumentationRegistry.getInstrumentation().targetContext
 
+    private fun getWritableDatabase(): SQLiteDatabase {
+        val openHelper = BDAppOpenHelper(appContext())
+        return openHelper.writableDatabase
+    }
+
+    private fun insereUtilizador(db: SQLiteDatabase, utilizador: Utilizador) {
+        utilizador.id = TabelaBDUtilizadores(db).insert(utilizador.toContentValues())
+        assertNotEquals(-1, utilizador.id)
+    }
+
+    private fun insereCombustivel(db: SQLiteDatabase, combustivel: Combustivel) {
+        combustivel.id = TabelaBDUtilizadores(db).insert(combustivel.toContentValues())
+        assertNotEquals(-1, combustivel.id)
+    }
+
+    private fun insereModelo(db: SQLiteDatabase, modelo: Modelo) {
+        modelo.id = TabelaBDUtilizadores(db).insert(modelo.toContentValues())
+        assertNotEquals(-1, modelo.id)
+    }
+
     @Before
     fun apagarBaseDados(){
         appContext().deleteDatabase(BDAppOpenHelper.NOME)
@@ -32,4 +54,32 @@ class BaseDadosTest {
 
         db.close()
     }
+
+    @Test
+    fun consegueInserirUtilizador(){
+        val db = getWritableDatabase()
+
+        insereUtilizador(db, Utilizador("Ricardo Sousa", "2002-06-25"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirCombustivel(){
+        val db = getWritableDatabase()
+
+        insereCombustivel(db, Combustivel("Gasoleo"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirModelo(){
+        val db = getWritableDatabase()
+
+        insereModelo(db, Modelo("BMW X6", "2020"))
+
+        db.close()
+    }
+
 }
