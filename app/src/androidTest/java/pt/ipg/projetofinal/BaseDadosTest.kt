@@ -31,13 +31,18 @@ class BaseDadosTest {
     }
 
     private fun insereCombustivel(db: SQLiteDatabase, combustivel: Combustivel) {
-        combustivel.id = TabelaBDUtilizadores(db).insert(combustivel.toContentValues())
+        combustivel.id = TabelaBDTipoCombustivel(db).insert(combustivel.toContentValues())
         assertNotEquals(-1, combustivel.id)
     }
 
     private fun insereModelo(db: SQLiteDatabase, modelo: Modelo) {
-        modelo.id = TabelaBDUtilizadores(db).insert(modelo.toContentValues())
+        modelo.id = TabelaBDModelos(db).insert(modelo.toContentValues())
         assertNotEquals(-1, modelo.id)
+    }
+
+    private fun insereCarro(db: SQLiteDatabase, carro: Carro) {
+        carro.id = TabelaBDCarros(db).insert(carro.toContentValues())
+        assertNotEquals(-1, carro.id)
     }
 
     @Before
@@ -80,6 +85,26 @@ class BaseDadosTest {
         insereModelo(db, Modelo("BMW X6", "2020"))
 
         db.close()
+    }
+
+    @Test
+    fun consegueInserirCarro(){
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        insereUtilizador(db, utilizador)
+
+        val combustivel = Combustivel("Gasoleo")
+        insereCombustivel(db, combustivel)
+
+        val modelo = Modelo("BMW X6", "2020")
+        insereModelo(db, modelo)
+
+        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        insereCarro(db, carro)
+
+        db.close()
+
     }
 
 }
