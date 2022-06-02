@@ -3,11 +3,11 @@ package pt.ipg.projetofinal
 import android.content.ContentValues
 
 data class Despesa(
-    var id: Long,
     var id_tipo_despesa: Long,
     var data_despesa: String,
     var valor_despesa: Float,
-    var id_carro: Long
+    var id_carro: Long,
+    var id: Long = -1
     ) {
 
     fun toContentValues() : ContentValues{

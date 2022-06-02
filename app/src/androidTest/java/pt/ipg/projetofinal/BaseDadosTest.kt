@@ -1,6 +1,7 @@
 package pt.ipg.projetofinal
 
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import android.view.Display
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -45,6 +46,16 @@ class BaseDadosTest {
         assertNotEquals(-1, carro.id)
     }
 
+    private fun insereTipoDespesa(db: SQLiteDatabase, tipoDespesa: TipoDespesa) {
+        tipoDespesa.id = TabelaBDTipoDespesa(db).insert(tipoDespesa.toContentValues())
+        assertNotEquals(-1, tipoDespesa.id)
+    }
+
+    private fun insereDespesa(db: SQLiteDatabase, despesa: Despesa){
+        despesa.id = TabelaBDDespesas(db).insert(despesa.toContentValues())
+        assertNotEquals(-1, despesa.id)
+    }
+
     @Before
     fun apagarBaseDados(){
         appContext().deleteDatabase(BDAppOpenHelper.NOME)
@@ -70,6 +81,28 @@ class BaseDadosTest {
     }
 
     @Test
+    fun consegueAlterarUtilizador(){
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+
+        insereUtilizador(db, utilizador)
+
+        utilizador.nome = "Joao"
+        utilizador.data_nascimento = "2002-03-28"
+
+        val registoAlterado = TabelaBDUtilizadores(db).update(
+            utilizador.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${utilizador.id}")
+        )
+
+        assertEquals(1, registoAlterado)
+
+        db.close()
+    }
+
+    @Test
     fun consegueInserirCombustivel(){
         val db = getWritableDatabase()
 
@@ -79,10 +112,53 @@ class BaseDadosTest {
     }
 
     @Test
+    fun consegueAlterarCombustivel(){
+        val db = getWritableDatabase()
+
+        val combustivel = Combustivel("Gasoleo")
+
+        insereCombustivel(db, combustivel)
+
+        combustivel.nome = "Gasolina"
+
+        val registoAlterado = TabelaBDTipoCombustivel(db).update(
+            combustivel.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${combustivel.id}")
+        )
+
+        assertEquals(1, registoAlterado)
+
+        db.close()
+    }
+
+    @Test
     fun consegueInserirModelo(){
         val db = getWritableDatabase()
 
         insereModelo(db, Modelo("BMW X6", "2020"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarModelo(){
+        val db = getWritableDatabase()
+
+        val modelo = Modelo("BMW X6", "2020")
+
+        insereModelo(db, modelo)
+
+        modelo.nome = "Mercedes"
+        modelo.ano = "2002"
+
+        val registoAlterado = TabelaBDModelos(db).update(
+            modelo.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${modelo.id}")
+        )
+
+        assertEquals(1, registoAlterado)
 
         db.close()
     }
@@ -105,6 +181,127 @@ class BaseDadosTest {
 
         db.close()
 
+    }
+
+    @Test
+    fun consegueAlterarCarro(){
+
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        insereUtilizador(db, utilizador)
+
+        val combustivel = Combustivel("Gasoleo")
+        insereCombustivel(db, combustivel)
+
+        val modelo = Modelo("BMW X6", "2020")
+        insereModelo(db, modelo)
+
+        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        insereCarro(db, carro)
+
+        carro.data_introduzida = "1999"
+
+        val registoAlterado = TabelaBDCarros(db).update(
+            carro.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${carro.id}")
+        )
+
+        assertEquals(1, registoAlterado)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirTipoDespesa(){
+        val db = getWritableDatabase()
+
+        insereTipoDespesa(db, TipoDespesa("Combustivel"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarTipoDespesa(){
+        val db = getWritableDatabase()
+
+        val tipoDespesa = TipoDespesa("Portagens")
+
+        insereTipoDespesa(db, tipoDespesa)
+
+        tipoDespesa.nome = "Combustivel"
+
+        val registoAlterado = TabelaBDTipoDespesa(db).update(
+            tipoDespesa.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${tipoDespesa.id}")
+        )
+
+        assertEquals(1, registoAlterado)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirDespesa(){
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        insereUtilizador(db, utilizador)
+
+        val combustivel = Combustivel("Gasoleo")
+        insereCombustivel(db, combustivel)
+
+        val modelo = Modelo("BMW X6", "2020")
+        insereModelo(db, modelo)
+
+        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        insereCarro(db, carro)
+
+        val tipoDespesa = TipoDespesa("Combustivel")
+        insereTipoDespesa(db, tipoDespesa)
+
+        insereDespesa(db, Despesa(tipoDespesa.id, "2021-06-23", 60.52f, carro.id))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarDespesa(){
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        insereUtilizador(db, utilizador)
+
+        val combustivel = Combustivel("Gasoleo")
+        insereCombustivel(db, combustivel)
+
+        val modelo = Modelo("BMW X6", "2020")
+        insereModelo(db, modelo)
+
+        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        insereCarro(db, carro)
+
+        val tipoDespesa = TipoDespesa("Combustivel")
+        insereTipoDespesa(db, tipoDespesa)
+
+        val despesa = Despesa(tipoDespesa.id, "2021-06-23", 50.05f, carro.id)
+
+        insereDespesa(db, despesa)
+
+        despesa.data_despesa = "2020-05-20"
+        despesa.valor_despesa = 20.05f
+
+        val registoAlterado = TabelaBDDespesas(db).update(
+            despesa.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${despesa.id}")
+        )
+
+        assertEquals(1, registoAlterado)
+
+        db.close()
     }
 
 }
