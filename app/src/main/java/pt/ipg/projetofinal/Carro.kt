@@ -3,7 +3,7 @@ package pt.ipg.projetofinal
 import android.content.ContentValues
 
 data class Carro(
-    var data_introduzida: String,
+    var data_introduzida: Long,
     var id_tipo_combustivel: Long,
     var id_modelo: Long,
     var id_utilizador: Long,

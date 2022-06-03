@@ -4,7 +4,7 @@ import android.content.ContentValues
 
 data class Despesa(
     var id_tipo_despesa: Long,
-    var data_despesa: String,
+    var data_despesa: Long,
     var valor_despesa: Float,
     var id_carro: Long,
     var id: Long = -1

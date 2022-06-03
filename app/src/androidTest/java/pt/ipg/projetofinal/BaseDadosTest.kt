@@ -75,7 +75,7 @@ class BaseDadosTest {
     fun consegueInserirUtilizador(){
         val db = getWritableDatabase()
 
-        insereUtilizador(db, Utilizador("Ricardo Sousa", "2002-06-25"))
+        insereUtilizador(db, Utilizador("Ricardo Sousa", 20020625))
 
         db.close()
     }
@@ -84,12 +84,12 @@ class BaseDadosTest {
     fun consegueAlterarUtilizador(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
 
         insereUtilizador(db, utilizador)
 
         utilizador.nome = "Joao"
-        utilizador.data_nascimento = "2002-03-28"
+        utilizador.data_nascimento = 20020328
 
         val registoAlterado = TabelaBDUtilizadores(db).update(
             utilizador.toContentValues(),
@@ -136,7 +136,7 @@ class BaseDadosTest {
     fun consegueInserirModelo(){
         val db = getWritableDatabase()
 
-        insereModelo(db, Modelo("BMW X6", "2020"))
+        insereModelo(db, Modelo("BMW X6", 2020))
 
         db.close()
     }
@@ -145,12 +145,12 @@ class BaseDadosTest {
     fun consegueAlterarModelo(){
         val db = getWritableDatabase()
 
-        val modelo = Modelo("BMW X6", "2020")
+        val modelo = Modelo("BMW X6", 2020)
 
         insereModelo(db, modelo)
 
         modelo.nome = "Mercedes"
-        modelo.ano = "2002"
+        modelo.ano = 2002
 
         val registoAlterado = TabelaBDModelos(db).update(
             modelo.toContentValues(),
@@ -167,16 +167,16 @@ class BaseDadosTest {
     fun consegueInserirCarro(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
         insereCombustivel(db, combustivel)
 
-        val modelo = Modelo("BMW X6", "2020")
+        val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        val carro = Carro(2020, combustivel.id, modelo.id, utilizador.id)
         insereCarro(db, carro)
 
         db.close()
@@ -188,19 +188,19 @@ class BaseDadosTest {
 
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
         insereCombustivel(db, combustivel)
 
-        val modelo = Modelo("BMW X6", "2020")
+        val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        val carro = Carro(2020, combustivel.id, modelo.id, utilizador.id)
         insereCarro(db, carro)
 
-        carro.data_introduzida = "1999"
+        carro.data_introduzida = 1999
 
         val registoAlterado = TabelaBDCarros(db).update(
             carro.toContentValues(),
@@ -247,22 +247,22 @@ class BaseDadosTest {
     fun consegueInserirDespesa(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
         insereCombustivel(db, combustivel)
 
-        val modelo = Modelo("BMW X6", "2020")
+        val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        val carro = Carro(2020, combustivel.id, modelo.id, utilizador.id)
         insereCarro(db, carro)
 
         val tipoDespesa = TipoDespesa("Combustivel")
         insereTipoDespesa(db, tipoDespesa)
 
-        insereDespesa(db, Despesa(tipoDespesa.id, "2021-06-23", 60.52f, carro.id))
+        insereDespesa(db, Despesa(tipoDespesa.id, 20210623, 60.52f, carro.id))
 
         db.close()
     }
@@ -271,26 +271,26 @@ class BaseDadosTest {
     fun consegueAlterarDespesa(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", "2002-06-25")
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
         insereCombustivel(db, combustivel)
 
-        val modelo = Modelo("BMW X6", "2020")
+        val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro("2020", combustivel.id, modelo.id, utilizador.id)
+        val carro = Carro(2020, combustivel.id, modelo.id, utilizador.id)
         insereCarro(db, carro)
 
         val tipoDespesa = TipoDespesa("Combustivel")
         insereTipoDespesa(db, tipoDespesa)
 
-        val despesa = Despesa(tipoDespesa.id, "2021-06-23", 50.05f, carro.id)
+        val despesa = Despesa(tipoDespesa.id, 20210623, 50.05f, carro.id)
 
         insereDespesa(db, despesa)
 
-        despesa.data_despesa = "2020-05-20"
+        despesa.data_despesa = 20200520
         despesa.valor_despesa = 20.05f
 
         val registoAlterado = TabelaBDDespesas(db).update(

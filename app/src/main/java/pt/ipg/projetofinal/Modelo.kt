@@ -4,7 +4,7 @@ import android.content.ContentValues
 
 data class Modelo(
     var nome: String,
-    var ano: String,
+    var ano: Long,
     var id: Long = -1
 ) {
 

@@ -4,7 +4,7 @@ import android.content.ContentValues
 
 data class Utilizador(
     var nome: String,
-    var data_nascimento: String,
+    var data_nascimento: Long,
     var id: Long = -1
     ) {
 
