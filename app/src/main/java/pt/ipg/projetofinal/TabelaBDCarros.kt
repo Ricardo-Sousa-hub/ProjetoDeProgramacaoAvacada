@@ -7,7 +7,7 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
     override fun cria(){
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$DATA_INSERT TEXT NOT NULL," +
+                "$DATA TEXT NOT NULL," +
                 "$ID_MODELO INTEGER NOT NULL," +
                 "$ID_TIPO_COMBUSTIVEL INTEGER NOT NULL," +
                 "$ID_UTILIZADOR INTEGER NOT NULL," +
@@ -18,7 +18,7 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
     companion object{
         const val NOME_TABELA = "carros"
-        const val DATA_INSERT = "data_introduzido"
+        const val DATA = "data"
         const val ID_TIPO_COMBUSTIVEL = "id_tipo_combustivel"
         const val ID_MODELO = "id_modelo"
         const val ID_UTILIZADOR = "id_utilizador"
