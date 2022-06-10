@@ -377,6 +377,10 @@ class BaseDadosTest {
         assertEquals(1, cursor.count)
         assertTrue(cursor.moveToNext())
 
+        val tipoModeloBD = Modelo.fromCursor(cursor)
+
+        assertEquals(modelo, tipoModeloBD)
+
         db.close()
     }
 
