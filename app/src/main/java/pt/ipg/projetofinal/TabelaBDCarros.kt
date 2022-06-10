@@ -7,7 +7,7 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
     override fun cria(){
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$DATA TEXT NOT NULL," +
+                "$DATA INTEGER NOT NULL," +
                 "$ID_MODELO INTEGER NOT NULL," +
                 "$ID_TIPO_COMBUSTIVEL INTEGER NOT NULL," +
                 "$ID_UTILIZADOR INTEGER NOT NULL," +

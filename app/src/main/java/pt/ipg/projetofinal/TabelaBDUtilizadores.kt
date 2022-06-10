@@ -8,7 +8,7 @@ class TabelaBDUtilizadores(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
     override fun cria(){
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$NOME TEXT NOT NULL," +
-                "$DATA_NASCIMENTO TEXT NOT NULL)")
+                "$DATA_NASCIMENTO INTEGER NOT NULL)")
     }
 
     companion object{

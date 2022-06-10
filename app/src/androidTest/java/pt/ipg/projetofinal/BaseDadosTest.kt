@@ -357,4 +357,27 @@ class BaseDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueLerModelos(){
+        val db = getWritableDatabase()
+
+        val modelo = Modelo("BMW X6", 2020)
+
+        insereModelo(db, modelo)
+
+        val cursor = TabelaBDModelos(db).query(
+            TabelaBDModelos.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${modelo.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        db.close()
+    }
+
 }
