@@ -15,6 +15,8 @@ class TabelaBDUtilizadores(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val NOME_TABELA = "utilizadores"
         const val NOME = "nome"
         const val DATA_NASCIMENTO = "data_nascimento"
+
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, NOME, DATA_NASCIMENTO)
     }
 
 }
