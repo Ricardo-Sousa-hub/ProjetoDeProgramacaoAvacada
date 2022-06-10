@@ -200,7 +200,7 @@ class BaseDadosTest {
         val carro = Carro(2020, combustivel.id, modelo.id, utilizador.id)
         insereCarro(db, carro)
 
-        carro.data_introduzida = 1999
+        carro.data = 1999
 
         val registoAlterado = TabelaBDCarros(db).update(
             carro.toContentValues(),
@@ -300,6 +300,32 @@ class BaseDadosTest {
         )
 
         assertEquals(1, registoAlterado)
+
+        db.close()
+    }
+    
+    @Test
+    fun consegueLerUtilizadores(){
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        insereUtilizador(db, utilizador)
+
+        val cursor = TabelaBDUtilizadores(db).query(
+            TabelaBDUtilizadores.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${utilizador.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val utilizadoresBD = Utilizador.fromCursor(cursor)
+
+        assertEquals(utilizador, utilizadoresBD)
 
         db.close()
     }
