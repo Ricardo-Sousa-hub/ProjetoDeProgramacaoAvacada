@@ -67,16 +67,21 @@ class ContentProviderApp : ContentProvider() {
 
             uriMatcher.addURI(AUTHORITY, TabelaBDUtilizadores.NOME_TABELA, URI_UTILIZADOR)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDUtilizadores.NOME_TABELA}/#", URI_UTILIZADOR_ESPECIFICO)
+
             uriMatcher.addURI(AUTHORITY, TabelaBDTipoCombustivel.NOME_TABELA, URI_TIPO_COMBUSTIVEL)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDTipoCombustivel.NOME_TABELA}/#", URI_TIPO_COMBUSTIVEL_ESPECIFICO)
+
             uriMatcher.addURI(AUTHORITY, TabelaBDModelos.NOME_TABELA, URI_MODELO)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDModelos.NOME_TABELA}/#", URI_MODELO_ESPECIFICO)
+
             uriMatcher.addURI(AUTHORITY, TabelaBDCarros.NOME_TABELA, URI_CARRO)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDCarros.NOME_TABELA}/#", URI_CARRO_ESPECIFICO)
+
             uriMatcher.addURI(AUTHORITY, TabelaBDTipoDespesa.NOME_TABELA, URI_TIPO_DESPESA)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDTipoDespesa.NOME_TABELA}/#", URI_TIPO_DESPESA_ESPECIFICO)
+
             uriMatcher.addURI(AUTHORITY, TabelaBDDespesas.NOME_TABELA, URI_DESPESA)
-            uriMatcher.addURI(AUTHORITY, "${TabelaBDDespesas.NOME_TABELA}/#", URI_TIPO_DESPESA_ESPECIFICO)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDDespesas.NOME_TABELA}/#", URI_DESPESA_ESPECIFICO)
 
             return uriMatcher
         }
