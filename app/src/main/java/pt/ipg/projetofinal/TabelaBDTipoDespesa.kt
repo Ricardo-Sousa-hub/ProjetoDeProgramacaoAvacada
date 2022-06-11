@@ -13,6 +13,11 @@ class TabelaBDTipoDespesa(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
     companion object{
         const val NOME_TABELA = "tipo_despesa"
         const val NOME_DESPESA = "nome_despesa"
+
+        val TODAS_COLUNAS = arrayOf(
+            BaseColumns._ID,
+            NOME_DESPESA
+        )
     }
 
 }
