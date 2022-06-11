@@ -6,14 +6,14 @@ import android.provider.BaseColumns
 
 data class Modelo(
     var nome: String,
-    var ano: Long,
+    var data: Long,
     var id: Long = -1
 ) {
 
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
         valores.put(TabelaBDModelos.NOME_MODELO, nome)
-        valores.put(TabelaBDModelos.DATA, ano)
+        valores.put(TabelaBDModelos.DATA, data)
 
         return valores
     }

@@ -150,7 +150,7 @@ class BaseDadosTest {
         insereModelo(db, modelo)
 
         modelo.nome = "Mercedes"
-        modelo.ano = 2002
+        modelo.data = 20022506
 
         val registoAlterado = TabelaBDModelos(db).update(
             modelo.toContentValues(),
@@ -363,7 +363,7 @@ class BaseDadosTest {
     fun consegueLerModelos(){
         val db = getWritableDatabase()
 
-        val modelo = Modelo("BMW X6", 2020)
+        val modelo = Modelo("BMW X6", 20200620)
 
         insereModelo(db, modelo)
 
@@ -390,7 +390,7 @@ class BaseDadosTest {
     fun consegueLerCarros(){
         val db = getWritableDatabase()
 
-        val modelo = Modelo("BMW X6", 2020)
+        val modelo = Modelo("BMW X6", 25062020)
         val combustivel = Combustivel("Gasoleo")
         val utilizador = Utilizador("Ricardo Sousa", 20020625)
 
@@ -403,7 +403,7 @@ class BaseDadosTest {
         insereCarro(db, carro)
 
         val cursor = TabelaBDCarros(db).query(
-            TabelaBDModelos.TODAS_COLUNAS,
+            TabelaBDCarros.TODAS_COLUNAS,
             "${BaseColumns._ID}=?",
             arrayOf("${carro.id}"),
             null,
@@ -416,7 +416,7 @@ class BaseDadosTest {
 
         val carroBD = Carro.fromCursor(cursor)
 
-        assertEquals(modelo, carroBD)
+        assertEquals(carro, carroBD)
 
         db.close()
     }
@@ -429,7 +429,7 @@ class BaseDadosTest {
         insereTipoDespesa(db, tipoDespesa)
 
         val cursor = TabelaBDTipoDespesa(db).query(
-            TabelaBDTipoCombustivel.TODAS_COLUNAS,
+            TabelaBDTipoDespesa.TODAS_COLUNAS,
             "${BaseColumns._ID}=?",
             arrayOf("${tipoDespesa.id}"),
             null,
@@ -453,7 +453,7 @@ class BaseDadosTest {
 
         val utilizador = Utilizador("Ricardo Sousa", 20020625)
         val combustivel = Combustivel("Gasoleo")
-        val modelo = Modelo("BMW X6", 2020)
+        val modelo = Modelo("BMW X6", 20200620)
         insereUtilizador(db, utilizador)
         insereCombustivel(db, combustivel)
         insereModelo(db, modelo)
@@ -485,7 +485,4 @@ class BaseDadosTest {
 
         db.close()
     }
-
-
-
 }
