@@ -21,6 +21,14 @@ class TabelaBDDespesas(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val DATA_DESPESA = "data_despesa"
         const val VALOR_DESPESA = "valor_despesa"
         const val ID_CARRO = "id_carro"
+
+        val TODAS_COLUNAS = arrayOf(
+            BaseColumns._ID,
+            ID_TIPO_DESPESA,
+            DATA_DESPESA,
+            VALOR_DESPESA,
+            ID_CARRO
+        )
     }
 
 }
