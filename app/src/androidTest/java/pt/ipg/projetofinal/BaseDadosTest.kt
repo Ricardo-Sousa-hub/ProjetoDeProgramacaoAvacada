@@ -262,7 +262,9 @@ class BaseDadosTest {
         val tipoDespesa = TipoDespesa("Combustivel")
         insereTipoDespesa(db, tipoDespesa)
 
-        insereDespesa(db, Despesa(tipoDespesa.id, 20210623, 60.52f, carro.id))
+        val despesa = Despesa(tipoDespesa.id, 20210623, 60.52f, carro.id)
+
+        insereDespesa(db, despesa)
 
         db.close()
     }
@@ -380,6 +382,41 @@ class BaseDadosTest {
         val tipoModeloBD = Modelo.fromCursor(cursor)
 
         assertEquals(modelo, tipoModeloBD)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueLerCarros(){
+        val db = getWritableDatabase()
+
+        val modelo = Modelo("BMW X6", 2020)
+        val combustivel = Combustivel("Gasoleo")
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+
+        insereModelo(db, modelo)
+        insereCombustivel(db, combustivel)
+        insereUtilizador(db, utilizador)
+
+        val carro = Carro(25062020, combustivel.id, modelo.id, utilizador.id)
+
+        insereCarro(db, carro)
+
+        val cursor = TabelaBDCarros(db).query(
+            TabelaBDModelos.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${carro.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val carroBD = Carro.fromCursor(cursor)
+
+        assertEquals(modelo, carroBD)
 
         db.close()
     }
