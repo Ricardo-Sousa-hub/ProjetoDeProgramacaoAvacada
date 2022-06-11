@@ -421,4 +421,30 @@ class BaseDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueLerTipoDespesa(){
+        val db = getWritableDatabase()
+
+        val tipoDespesa = TipoDespesa("Combustivel")
+        insereTipoDespesa(db, tipoDespesa)
+
+        val cursor = TabelaBDTipoDespesa(db).query(
+            TabelaBDTipoCombustivel.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${tipoDespesa.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val tipoDespesaBD = TipoDespesa.fromCursor(cursor)
+
+        assertEquals(tipoDespesa, tipoDespesaBD)
+
+        db.close()
+    }
+
 }
