@@ -22,6 +22,14 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val ID_TIPO_COMBUSTIVEL = "id_tipo_combustivel"
         const val ID_MODELO = "id_modelo"
         const val ID_UTILIZADOR = "id_utilizador"
+
+        val TODAS_COLUNAS = arrayOf(
+            BaseColumns._ID,
+            DATA,
+            ID_MODELO,
+            ID_TIPO_COMBUSTIVEL,
+            ID_UTILIZADOR
+        )
     }
 
 }
