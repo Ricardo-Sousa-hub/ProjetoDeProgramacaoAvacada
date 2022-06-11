@@ -447,4 +447,43 @@ class BaseDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueLerDespesa(){
+        val db = getWritableDatabase()
+
+        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val combustivel = Combustivel("Gasoleo")
+        val modelo = Modelo("BMW X6", 2020)
+        insereUtilizador(db, utilizador)
+        insereCombustivel(db, combustivel)
+        insereModelo(db, modelo)
+
+        val carro = Carro(2020, combustivel.id, modelo.id, utilizador.id)
+        insereCarro(db, carro)
+
+        val tipoDespesa = TipoDespesa("Combustivel")
+        insereTipoDespesa(db, tipoDespesa)
+
+        val despesa = Despesa(tipoDespesa.id, 20210623, 60.52f, carro.id)
+        insereDespesa(db, despesa)
+
+        val cursor = TabelaBDDespesas(db).query(
+            TabelaBDDespesas.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${despesa.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val despesaBD = Despesa.fromCursor(cursor)
+
+        assertEquals(despesa, despesaBD)
+
+        db.close()
+    }
+
 }
