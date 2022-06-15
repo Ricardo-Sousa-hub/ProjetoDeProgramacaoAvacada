@@ -93,7 +93,24 @@ class ContentProviderApp : ContentProvider() {
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val db = db!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val registosApagados =  when(getUriMatcher().match(uri)){
+            URI_UTILIZADOR -> TabelaBDUtilizadores(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_TIPO_COMBUSTIVEL -> TabelaBDTipoCombustivel(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_MODELO -> TabelaBDModelos(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_CARRO -> TabelaBDCarros(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_TIPO_DESPESA -> TabelaBDTipoDespesa(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_DESPESA -> TabelaBDDespesas(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            else -> 0
+        }
+
+        db.close()
+
+        return registosApagados
+
     }
 
     override fun update(
