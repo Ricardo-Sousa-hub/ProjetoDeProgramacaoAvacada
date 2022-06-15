@@ -98,12 +98,12 @@ class ContentProviderApp : ContentProvider() {
         val id = uri.lastPathSegment
 
         val registosApagados =  when(getUriMatcher().match(uri)){
-            URI_UTILIZADOR -> TabelaBDUtilizadores(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_TIPO_COMBUSTIVEL -> TabelaBDTipoCombustivel(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_MODELO -> TabelaBDModelos(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_CARRO -> TabelaBDCarros(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_TIPO_DESPESA -> TabelaBDTipoDespesa(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_DESPESA -> TabelaBDDespesas(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_UTILIZADOR_ESPECIFICO -> TabelaBDUtilizadores(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_TIPO_COMBUSTIVEL_ESPECIFICO -> TabelaBDTipoCombustivel(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_MODELO_ESPECIFICO -> TabelaBDModelos(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_CARRO_ESPECIFICO -> TabelaBDCarros(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_TIPO_DESPESA_ESPECIFICO -> TabelaBDTipoDespesa(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_DESPESA_ESPECIFICO -> TabelaBDDespesas(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
             else -> 0
         }
 
@@ -119,7 +119,25 @@ class ContentProviderApp : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO("Not yet implemented")
+        requireNotNull(values)
+
+        val db = db!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val registosAlterados = when(getUriMatcher().match(uri)){
+            URI_UTILIZADOR_ESPECIFICO -> TabelaBDUtilizadores(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_TIPO_COMBUSTIVEL_ESPECIFICO -> TabelaBDTipoCombustivel(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_MODELO_ESPECIFICO -> TabelaBDModelos(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_CARRO_ESPECIFICO -> TabelaBDCarros(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_TIPO_DESPESA_ESPECIFICO -> TabelaBDTipoDespesa(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_DESPESA_ESPECIFICO -> TabelaBDDespesas(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            else -> 0
+        }
+
+        db.close()
+
+        return registosAlterados
     }
 
     companion object {
