@@ -25,9 +25,22 @@ class ContentProviderApp : ContentProvider() {
         TODO("Not yet implemented")
     }
 
-    override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
-    }
+    override fun getType(uri: Uri): String? =
+        when(getUriMatcher().match(uri)){
+            URI_UTILIZADOR -> "$MULTIPLOS_REGISTOS/${TabelaBDUtilizadores.NOME_TABELA}"
+            URI_UTILIZADOR_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDUtilizadores.NOME_TABELA}"
+            URI_TIPO_COMBUSTIVEL -> "$MULTIPLOS_REGISTOS/${TabelaBDTipoCombustivel.NOME_TABELA}"
+            URI_TIPO_COMBUSTIVEL_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDTipoCombustivel.NOME_TABELA}"
+            URI_MODELO -> "$MULTIPLOS_REGISTOS/${TabelaBDModelos.NOME_TABELA}"
+            URI_MODELO_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDModelos.NOME_TABELA}"
+            URI_CARRO -> "$MULTIPLOS_REGISTOS/${TabelaBDCarros.NOME_TABELA}"
+            URI_CARRO_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDCarros.NOME_TABELA}"
+            URI_TIPO_DESPESA -> "$MULTIPLOS_REGISTOS/${TabelaBDTipoDespesa.NOME_TABELA}"
+            URI_TIPO_DESPESA_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDTipoDespesa.NOME_TABELA}"
+            URI_DESPESA -> "$MULTIPLOS_REGISTOS/${TabelaBDDespesas.NOME_TABELA}"
+            URI_DESPESA_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDDespesas.NOME_TABELA}"
+            else -> null
+        }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
         TODO("Not yet implemented")
@@ -61,6 +74,9 @@ class ContentProviderApp : ContentProvider() {
         const val URI_TIPO_DESPESA_ESPECIFICO = 501
         const val URI_DESPESA = 600
         const val URI_DESPESA_ESPECIFICO = 601
+
+        const val UNICO_REGISTO = "vnd.android.cursor.item"
+        const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
