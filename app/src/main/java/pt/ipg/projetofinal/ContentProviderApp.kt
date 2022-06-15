@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ContentProviderApp : ContentProvider() {
     var db : BDAppOpenHelper? = null
@@ -22,7 +23,34 @@ class ContentProviderApp : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val db = db!!.readableDatabase
+
+        requireNotNull(projection)
+        val colunas = projection as Array<String>
+
+        val argsSelecao = selectionArgs as Array<String>?
+
+        val id = uri.lastPathSegment
+
+        val cursor = when (getUriMatcher().match(uri)){
+            URI_UTILIZADOR -> TabelaBDUtilizadores(db).query(colunas, selection, argsSelecao, null, null, sortOrder)
+            URI_UTILIZADOR_ESPECIFICO -> TabelaBDUtilizadores(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_TIPO_COMBUSTIVEL -> TabelaBDTipoCombustivel(db).query(colunas, selection, argsSelecao, null, null, sortOrder)
+            URI_TIPO_COMBUSTIVEL_ESPECIFICO -> TabelaBDTipoCombustivel(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_MODELO -> TabelaBDModelos(db).query(colunas, selection, argsSelecao, null, null, sortOrder)
+            URI_MODELO_ESPECIFICO -> TabelaBDModelos(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_CARRO -> TabelaBDCarros(db).query(colunas, selection, argsSelecao, null, null, sortOrder)
+            URI_CARRO_ESPECIFICO -> TabelaBDCarros(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_TIPO_DESPESA -> TabelaBDTipoDespesa(db).query(colunas, selection, argsSelecao, null, null, sortOrder)
+            URI_TIPO_DESPESA_ESPECIFICO -> TabelaBDTipoDespesa(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_DESPESA -> TabelaBDDespesas(db).query(colunas, selection, argsSelecao, null, null, sortOrder)
+            URI_DESPESA_ESPECIFICO -> TabelaBDDespesas(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            else -> null
+        }
+
+        db.close()
+
+        return cursor
     }
 
     override fun getType(uri: Uri): String? =
