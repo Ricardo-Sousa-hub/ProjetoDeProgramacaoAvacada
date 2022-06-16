@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_utilizadores" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="pt.ipg.projetofinal.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_carros"
+        android:name="pt.ipg.projetofinal.ui.carros.CarrosFragment"
+        android:label="@string/title_carros"
+        tools:layout="@layout/fragment_carros" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_tipo_despesa"
         android:name="pt.ipg.projetofinal.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/title_tipo_despesa"
+        tools:layout="@layout/fragment_tipo_despesa" />
 </navigation>

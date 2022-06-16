@@ -28,7 +28,7 @@ class UtilizadoresFragment : Fragment() {
         _binding = FragmentUtilizadoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.textUtilizadores
         utilizadoresViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
