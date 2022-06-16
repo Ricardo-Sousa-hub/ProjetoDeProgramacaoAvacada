@@ -16,4 +16,14 @@
         android:icon="@drawable/ic_euro_24"
         android:title="@string/title_tipo_despesa" />
 
+    <item
+        android:id="@+id/navigation_despesas"
+        android:icon="@drawable/ic_format_list_24"
+        android:title="@string/title_despesas" />
+
+    <item
+        android:id="@+id/navigation_estatistica"
+        android:icon="@drawable/ic_format_list_24"
+        android:title="@string/title_estatistica" />
+
 </menu>

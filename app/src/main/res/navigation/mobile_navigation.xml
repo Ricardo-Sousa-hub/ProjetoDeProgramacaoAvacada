@@ -22,4 +22,9 @@
         android:name="pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment"
         android:label="@string/title_tipo_despesa"
         tools:layout="@layout/fragment_tipo_despesa" />
+    <fragment
+        android:id="@+id/navigation_despesas"
+        android:name="pt.ipg.projetofinal.ui.despesas.DespesasFragment"
+        android:label="@string/title_despesas"
+        tools:layout="@layout/fragment_despesas" />
 </navigation>
