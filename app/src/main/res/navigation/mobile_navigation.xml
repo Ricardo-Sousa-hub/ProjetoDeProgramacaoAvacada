@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_tipo_despesa"
-        android:name="pt.ipg.projetofinal.ui.notifications.NotificationsFragment"
+        android:name="pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment"
         android:label="@string/title_tipo_despesa"
         tools:layout="@layout/fragment_tipo_despesa" />
 </navigation>

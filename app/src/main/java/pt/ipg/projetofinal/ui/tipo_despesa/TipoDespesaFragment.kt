@@ -1,4 +1,4 @@
-package pt.ipg.projetofinal.ui.notifications
+package pt.ipg.projetofinal.ui.tipo_despesa
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import pt.ipg.projetofinal.databinding.FragmentNotificationsBinding
+import pt.ipg.projetofinal.databinding.FragmentTipoDespesaBinding
 
-class NotificationsFragment : Fragment() {
+class TipoDespesaFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentTipoDespesaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +22,14 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val tipoDespesaViewModel =
+            ViewModelProvider(this).get(TipoDespesaViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentTipoDespesaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textTipoDespesa
+        tipoDespesaViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
