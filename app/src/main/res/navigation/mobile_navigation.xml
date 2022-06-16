@@ -27,4 +27,9 @@
         android:name="pt.ipg.projetofinal.ui.despesas.DespesasFragment"
         android:label="@string/title_despesas"
         tools:layout="@layout/fragment_despesas" />
+    <fragment
+        android:id="@+id/navigation_estatistica"
+        android:name="pt.ipg.projetofinal.ui.estatistica.EstatisticaFragment"
+        android:label="@string/title_estatistica"
+        tools:layout="@layout/fragment_estatistica" />
 </navigation>

@@ -4,6 +4,7 @@
     <string name="title_carros">Carros</string>
     <string name="title_tipo_despesa">Tipos de Despesas</string>
     <string name="title_despesas">Despesas</string>
+    <string name="title_estatistica">Estatistica</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
