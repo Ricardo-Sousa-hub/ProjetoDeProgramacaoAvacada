@@ -9,7 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import pt.ipg.projetofinal.ContentProviderApp
+import pt.ipg.projetofinal.TabelaBDCarros
+import pt.ipg.projetofinal.TabelaBDUtilizadores
 import pt.ipg.projetofinal.databinding.FragmentUtilizadoresBinding
 
 class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -38,6 +42,12 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -53,9 +63,15 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
-    }
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderApp.ENDERECO_UTILIZADOR,
+            TabelaBDUtilizadores.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaBDUtilizadores.NOME}"
+        )
 
     /**
      * Called when a previously created loader has finished its load.  Note
@@ -116,5 +132,9 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+
+    companion object{
+        const val ID_LOADER_UTILIZADORES = 0
     }
 }

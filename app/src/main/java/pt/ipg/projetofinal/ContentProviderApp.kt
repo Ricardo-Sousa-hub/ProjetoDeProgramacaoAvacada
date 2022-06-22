@@ -141,23 +141,31 @@ class ContentProviderApp : ContentProvider() {
     }
 
     companion object {
-        const val AUTHORITY = "pt.ipg.projetofinal"
+        private const val AUTHORITY = "pt.ipg.projetofinal"
 
-        const val URI_UTILIZADOR = 100
-        const val URI_UTILIZADOR_ESPECIFICO = 101
-        const val URI_TIPO_COMBUSTIVEL = 200
-        const val URI_TIPO_COMBUSTIVEL_ESPECIFICO = 201
-        const val URI_MODELO = 300
-        const val URI_MODELO_ESPECIFICO = 301
-        const val URI_CARRO= 400
-        const val URI_CARRO_ESPECIFICO = 401
-        const val URI_TIPO_DESPESA = 500
-        const val URI_TIPO_DESPESA_ESPECIFICO = 501
-        const val URI_DESPESA = 600
-        const val URI_DESPESA_ESPECIFICO = 601
+        private const val URI_UTILIZADOR = 100
+        private const val URI_UTILIZADOR_ESPECIFICO = 101
+        private const val URI_TIPO_COMBUSTIVEL = 200
+        private const val URI_TIPO_COMBUSTIVEL_ESPECIFICO = 201
+        private const val URI_MODELO = 300
+        private const val URI_MODELO_ESPECIFICO = 301
+        private const val URI_CARRO= 400
+        private const val URI_CARRO_ESPECIFICO = 401
+        private const val URI_TIPO_DESPESA = 500
+        private const val URI_TIPO_DESPESA_ESPECIFICO = 501
+        private const val URI_DESPESA = 600
+        private const val URI_DESPESA_ESPECIFICO = 601
 
-        const val UNICO_REGISTO = "vnd.android.cursor.item"
-        const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
+        private const val UNICO_REGISTO = "vnd.android.cursor.item"
+        private const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
+
+        private val ENDERECO_BASE =Uri.parse("content://$AUTHORITY")
+        val ENDERECO_UTILIZADOR =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDUtilizadores.NOME_TABELA)
+        val ENDERECO_TIPO_COMBUSTIVEL =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDTipoCombustivel.NOME_TABELA)
+        val ENDERECO_MODELO =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDModelos.NOME_TABELA)
+        val ENDERECO_CARROS =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDCarros.NOME_TABELA)
+        val ENDERECO_TIPO_DESPESA =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDTipoDespesa.NOME_TABELA)
+        val ENDERECO_DESPESAS =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDDespesas.NOME_TABELA)
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
