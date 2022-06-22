@@ -136,7 +136,7 @@ class DespesasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterDespesas!!.cursor = null
     }
 
     companion object{

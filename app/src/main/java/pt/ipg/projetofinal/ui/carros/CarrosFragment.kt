@@ -135,7 +135,7 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterCarros!!.cursor = null
     }
 
     companion object{
