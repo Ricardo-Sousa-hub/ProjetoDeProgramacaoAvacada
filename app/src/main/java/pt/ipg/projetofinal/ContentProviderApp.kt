@@ -161,8 +161,8 @@ class ContentProviderApp : ContentProvider() {
 
         private val ENDERECO_BASE =Uri.parse("content://$AUTHORITY")
         val ENDERECO_UTILIZADOR =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDUtilizadores.NOME_TABELA)
-        val ENDERECO_TIPO_COMBUSTIVEL =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDTipoCombustivel.NOME_TABELA)
-        val ENDERECO_MODELO =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDModelos.NOME_TABELA)
+        val ENDERECO_TIPO_COMBUSTIVEL =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDTipoCombustivel.NOME_TABELA) // adicionado pelo admin
+        val ENDERECO_MODELO =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDModelos.NOME_TABELA) // adicionado pelo admin
         val ENDERECO_CARROS =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDCarros.NOME_TABELA)
         val ENDERECO_TIPO_DESPESA =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDTipoDespesa.NOME_TABELA)
         val ENDERECO_DESPESAS =Uri.withAppendedPath(ENDERECO_BASE, TabelaBDDespesas.NOME_TABELA)
