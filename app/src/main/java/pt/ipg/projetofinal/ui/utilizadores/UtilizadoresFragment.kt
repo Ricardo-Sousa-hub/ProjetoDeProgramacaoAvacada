@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.recyclerview.widget.LinearLayoutManager
+import pt.ipg.projetofinal.AdapterUtilizadores
 import pt.ipg.projetofinal.ContentProviderApp
 import pt.ipg.projetofinal.TabelaBDCarros
 import pt.ipg.projetofinal.TabelaBDUtilizadores
@@ -19,6 +21,7 @@ import pt.ipg.projetofinal.databinding.FragmentUtilizadoresBinding
 class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentUtilizadoresBinding? = null
+    private var adapterUtilizadores : AdapterUtilizadores? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,6 +49,10 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         super.onViewCreated(view, savedInstanceState)
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
+
+        adapterUtilizadores = AdapterUtilizadores()
+        binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
+        binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {
