@@ -4,8 +4,9 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import pt.ipg.projetofinal.ui.carros.CarrosFragment
 
-class AdapterCarros : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
+class AdapterCarros(val fragment: CarrosFragment) : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
 
     var cursor: Cursor? = null
         get() = field
@@ -44,7 +45,8 @@ class AdapterCarros : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderCarros {
-        TODO("Not yet implemented")
+        val itemLivro = fragment.layoutInflater.inflate(R.layout.fragment_carros, parent, false)
+        return ViewHolderCarros(itemLivro)
     }
 
     /**
