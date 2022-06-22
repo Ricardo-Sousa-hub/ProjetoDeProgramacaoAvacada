@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
-import pt.ipg.projetofinal.ContentProviderApp
-import pt.ipg.projetofinal.TabelaBDTipoDespesa
-import pt.ipg.projetofinal.TabelaBDUtilizadores
+import androidx.recyclerview.widget.LinearLayoutManager
+import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentTipoDespesaBinding
+import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
 
 class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentTipoDespesaBinding? = null
+    private var adapterTipoDespesas : AdapterTipoDespesas? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,6 +41,16 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             //textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(TipoDespesaFragment.ID_LOADER_TIPO_DESPESA, null, this)
+
+        adapterTipoDespesas = AdapterTipoDespesas()
+        binding.recyclerViewTipoDespesa.adapter = adapterTipoDespesas
+        binding.recyclerViewTipoDespesa.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {
@@ -126,5 +137,9 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+
+    companion object{
+        const val ID_LOADER_TIPO_DESPESA = 0
     }
 }

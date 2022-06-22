@@ -7,6 +7,7 @@
     tools:context=".ui.tipo_despesa.TipoDespesaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTipoDespesa"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
