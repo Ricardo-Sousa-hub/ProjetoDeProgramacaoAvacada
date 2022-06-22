@@ -16,7 +16,7 @@ import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentDespesasBinding
 import pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment
 
-class DespesasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class DespesasFragment() : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentDespesasBinding? = null
     private var adapterDespesas : AdapterDespesas? = null
@@ -48,7 +48,7 @@ class DespesasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this).initLoader(DespesasFragment.ID_LOADER_DESPESAS, null, this)
 
-        adapterDespesas = AdapterDespesas()
+        adapterDespesas = AdapterDespesas(this)
         binding.recyclerViewDespesas.adapter = adapterDespesas
         binding.recyclerViewDespesas.layoutManager = LinearLayoutManager(requireContext())
     }

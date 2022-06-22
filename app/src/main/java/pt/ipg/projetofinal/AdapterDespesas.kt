@@ -4,8 +4,9 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import pt.ipg.projetofinal.ui.despesas.DespesasFragment
 
-class AdapterDespesas : RecyclerView.Adapter<AdapterDespesas.ViewHolderDespesas>() {
+class AdapterDespesas(val fragment: DespesasFragment) : RecyclerView.Adapter<AdapterDespesas.ViewHolderDespesas>() {
 
     var cursor: Cursor? = null
         get() = field
@@ -44,7 +45,8 @@ class AdapterDespesas : RecyclerView.Adapter<AdapterDespesas.ViewHolderDespesas>
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderDespesas {
-        TODO("Not yet implemented")
+        val itemDespesas = fragment.layoutInflater.inflate(R.layout.fragment_despesas, parent, false)
+        return ViewHolderDespesas(itemDespesas)
     }
 
     /**
