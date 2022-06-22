@@ -9,7 +9,11 @@
         android:id="@+id/navigation_utilizadores"
         android:name="pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment"
         android:label="@string/title_utilizadores"
-        tools:layout="@layout/fragment_utilizadores" />
+        tools:layout="@layout/fragment_utilizadores" >
+        <action
+            android:id="@+id/action_navigation_utilizadores_to_inserirUtilizadorFragment"
+            app:destination="@id/navigation_inserir_Utilizador_Fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_carros"
@@ -32,4 +36,9 @@
         android:name="pt.ipg.projetofinal.ui.estatistica.EstatisticaFragment"
         android:label="@string/title_estatistica"
         tools:layout="@layout/fragment_estatistica" />
+    <fragment
+        android:id="@+id/navigation_inserir_Utilizador_Fragment"
+        android:name="pt.ipg.projetofinal.InserirUtilizadorFragment"
+        android:label="@string/inserir_novo_utilizador"
+        tools:layout="@layout/fragment_inserir_utilizador" />
 </navigation>

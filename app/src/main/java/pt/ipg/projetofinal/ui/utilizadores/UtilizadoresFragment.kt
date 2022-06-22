@@ -12,11 +12,11 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
-import pt.ipg.projetofinal.AdapterUtilizadores
-import pt.ipg.projetofinal.ContentProviderApp
-import pt.ipg.projetofinal.TabelaBDCarros
-import pt.ipg.projetofinal.TabelaBDUtilizadores
 import pt.ipg.projetofinal.databinding.FragmentUtilizadoresBinding
+import androidx.navigation.fragment.findNavController
+
+import androidx.navigation.fragment.findNavController
+import pt.ipg.projetofinal.*
 
 class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -31,28 +31,28 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         val utilizadoresViewModel =
             ViewModelProvider(this).get(UtilizadoresViewModel::class.java)
 
         _binding = FragmentUtilizadoresBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        //val textView: TextView = binding.textUtilizadores
-        utilizadoresViewModel.text.observe(viewLifecycleOwner) {
-            //textView.text = it
-        }
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonInserirUtilizador.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_utilizadores_to_inserirUtilizadorFragment)
+        }
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
 
         adapterUtilizadores = AdapterUtilizadores(this)
         binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
+
     }
 
     override fun onDestroyView() {
