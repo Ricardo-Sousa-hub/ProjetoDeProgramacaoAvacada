@@ -11,13 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
-import pt.ipg.projetofinal.ContentProviderApp
-import pt.ipg.projetofinal.TabelaBDCarros
-import pt.ipg.projetofinal.TabelaBDUtilizadores
+import androidx.recyclerview.widget.LinearLayoutManager
+import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentCarrosBinding
+import pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment
+
 class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentCarrosBinding? = null
+    private var adapterCarros : AdapterCarros? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,6 +41,16 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             //textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(CarrosFragment.ID_LOADER_CARROS, null, this)
+
+        adapterCarros = AdapterCarros()
+        binding.recyclerViewCarros.adapter = adapterCarros
+        binding.recyclerViewCarros.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {
