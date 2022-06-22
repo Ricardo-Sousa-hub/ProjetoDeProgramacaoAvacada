@@ -4,9 +4,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterCarros : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
+class AdapterTipoDespesas : RecyclerView.Adapter<AdapterTipoDespesas.ViewHolderTipoDespesas>() {
 
-    class ViewHolderCarros(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolderTipoDespesas(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
@@ -33,7 +33,7 @@ class AdapterCarros : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
      * @see .getItemViewType
      * @see .onBindViewHolder
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderCarros {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTipoDespesas {
         TODO("Not yet implemented")
     }
 
@@ -58,7 +58,7 @@ class AdapterCarros : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
      * item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-    override fun onBindViewHolder(holder: ViewHolderCarros, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderTipoDespesas, position: Int) {
         TODO("Not yet implemented")
     }
 
@@ -70,6 +70,5 @@ class AdapterCarros : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
     }
-
 
 }

@@ -4,9 +4,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterDespesas : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtilizador>() {
+class AdapterDespesas : RecyclerView.Adapter<AdapterDespesas.ViewHolderDespesas>() {
 
-    class ViewHolderUtilizador(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolderDespesas(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
@@ -33,10 +33,7 @@ class AdapterDespesas : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtili
      * @see .getItemViewType
      * @see .onBindViewHolder
      */
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): AdapterUtilizadores.ViewHolderUtilizador {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderDespesas {
         TODO("Not yet implemented")
     }
 
@@ -61,7 +58,7 @@ class AdapterDespesas : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtili
      * item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-    override fun onBindViewHolder(holder: AdapterUtilizadores.ViewHolderUtilizador, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderDespesas, position: Int) {
         TODO("Not yet implemented")
     }
 
@@ -73,4 +70,6 @@ class AdapterDespesas : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtili
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
     }
+
+
 }
