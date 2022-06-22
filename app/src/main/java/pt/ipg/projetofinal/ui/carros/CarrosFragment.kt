@@ -9,7 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import pt.ipg.projetofinal.ContentProviderApp
+import pt.ipg.projetofinal.TabelaBDCarros
+import pt.ipg.projetofinal.TabelaBDUtilizadores
 import pt.ipg.projetofinal.databinding.FragmentCarrosBinding
 class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -51,11 +55,15 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
-    }
-
-
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderApp.ENDERECO_CARROS,
+            TabelaBDCarros.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaBDCarros.ID_MODELO}"
+        )
 
     /**
      * Called when a previously created loader has finished its load.  Note
