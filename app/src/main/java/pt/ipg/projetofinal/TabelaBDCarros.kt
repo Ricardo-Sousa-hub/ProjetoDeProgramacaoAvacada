@@ -1,6 +1,8 @@
 package pt.ipg.projetofinal
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteQueryBuilder
 import android.provider.BaseColumns
 
 class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
@@ -16,18 +18,36 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
                 "FOREIGN KEY ($ID_UTILIZADOR) REFERENCES ${TabelaBDUtilizadores.NOME_TABELA}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
+    override fun query(
+        columns: Array<String>,
+        selection: String?,
+        selectionArgs: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?
+    ): Cursor {
+        val queryBuilder = SQLiteQueryBuilder()
+        queryBuilder.tables = "$NOME_TABELA INNER JOIN ${TabelaBDTipoCombustivel.NOME_TABELA} ON ${TabelaBDTipoCombustivel.CAMPO_ID} = $ID_TIPO_COMBUSTIVEL" +
+                "INNER JOIN ${TabelaBDModelos.NOME_TABELA} ON ${TabelaBDModelos.CAMPO_ID} = $ID_MODELO" +
+                "INNER JOIN ${TabelaBDUtilizadores.NOME_TABELA} ON ${TabelaBDUtilizadores.CAMPO_ID} = $ID_UTILIZADOR"
+
+        return queryBuilder.query(db, columns, selection, selectionArgs, groupBy, having, orderBy)
+    }
+
     companion object{
         const val NOME_TABELA = "carros"
+
+        const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
         const val DATA = "data"
         const val ID_TIPO_COMBUSTIVEL = "id_tipo_combustivel"
         const val ID_MODELO = "id_modelo"
         const val ID_UTILIZADOR = "id_utilizador"
 
         val TODAS_COLUNAS = arrayOf(
-            BaseColumns._ID,
+            CAMPO_ID,
             DATA,
-            ID_MODELO,
-            ID_TIPO_COMBUSTIVEL,
+            TabelaBDModelos.NOME_MODELO,
+            TabelaBDTipoCombustivel.NOME_COMBUSTIVEL,
             ID_UTILIZADOR
         )
     }

@@ -3,6 +3,7 @@ package pt.ipg.projetofinal
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.projetofinal.ui.carros.CarrosFragment
 
