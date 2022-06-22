@@ -4,9 +4,10 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
 
 
-class AdapterUtilizadores : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtilizador>() {
+class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtilizador>() {
 
     var cursor: Cursor? = null
         get() = field
@@ -45,7 +46,8 @@ class AdapterUtilizadores : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderU
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderUtilizador {
-        TODO("Not yet implemented")
+        val itemUtilizadores = fragment.layoutInflater.inflate(R.layout.fragment_utilizadores, parent, false)
+        return AdapterUtilizadores.ViewHolderUtilizador(itemUtilizadores)
     }
 
     /**

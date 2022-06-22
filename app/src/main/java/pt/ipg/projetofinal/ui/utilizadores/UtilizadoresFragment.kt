@@ -50,7 +50,7 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
 
-        adapterUtilizadores = AdapterUtilizadores()
+        adapterUtilizadores = AdapterUtilizadores(this)
         binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
     }
