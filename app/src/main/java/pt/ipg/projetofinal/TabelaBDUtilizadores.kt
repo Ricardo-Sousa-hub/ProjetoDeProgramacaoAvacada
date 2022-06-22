@@ -13,7 +13,7 @@ class TabelaBDUtilizadores(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
     companion object{
         const val NOME_TABELA = "utilizadores"
-        const val CAMPO_ID = "${TabelaBDUtilizadores.NOME_TABELA}.${BaseColumns._ID}"
+        const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
         const val NOME = "nome"
         const val DATA_NASCIMENTO = "data_nascimento"
 

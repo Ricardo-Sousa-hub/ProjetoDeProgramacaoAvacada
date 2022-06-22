@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteQueryBuilder
 import android.provider.BaseColumns
+import androidx.navigation.ui.AppBarConfiguration
 
 class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
@@ -27,9 +28,16 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         orderBy: String?
     ): Cursor {
         val queryBuilder = SQLiteQueryBuilder()
-        queryBuilder.tables = "$NOME_TABELA INNER JOIN ${TabelaBDTipoCombustivel.NOME_TABELA} ON ${TabelaBDTipoCombustivel.CAMPO_ID} = $ID_TIPO_COMBUSTIVEL" +
-                "INNER JOIN ${TabelaBDModelos.NOME_TABELA} ON ${TabelaBDModelos.CAMPO_ID} = $ID_MODELO" +
-                "INNER JOIN ${TabelaBDUtilizadores.NOME_TABELA} ON ${TabelaBDUtilizadores.CAMPO_ID} = $ID_UTILIZADOR"
+        queryBuilder.tables = "$NOME_TABELA," +
+                " ${TabelaBDTipoCombustivel.NOME_TABELA}," +
+                " ${TabelaBDModelos.NOME_TABELA}," +
+                " ${TabelaBDUtilizadores.NOME_TABELA}" +
+                " WHERE" +
+                " ${TabelaBDTipoCombustivel.CAMPO_ID} = $ID_TIPO_COMBUSTIVEL" +
+                " AND" +
+                " ${TabelaBDModelos.CAMPO_ID} = $ID_MODELO" +
+                " AND" +
+                " ${TabelaBDUtilizadores.CAMPO_ID} = $ID_UTILIZADOR"
 
         return queryBuilder.query(db, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
@@ -46,9 +54,9 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         val TODAS_COLUNAS = arrayOf(
             CAMPO_ID,
             DATA,
-            TabelaBDModelos.NOME_MODELO,
             TabelaBDTipoCombustivel.NOME_COMBUSTIVEL,
-            ID_UTILIZADOR
+            TabelaBDModelos.NOME_MODELO,
+            TabelaBDUtilizadores.NOME
         )
     }
 

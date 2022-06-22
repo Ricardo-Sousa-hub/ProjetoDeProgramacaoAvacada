@@ -261,7 +261,7 @@ class BaseDadosTest {
         val tipoDespesa = TipoDespesa("Combustivel")
         insereTipoDespesa(db, tipoDespesa)
 
-        val despesa = Despesa(tipoDespesa.id, 20210623, 60.52f, carro.id)
+        val despesa = Despesa(tipoDespesa, 20210623, 60.52f, carro)
 
         insereDespesa(db, despesa)
 
@@ -287,7 +287,7 @@ class BaseDadosTest {
         val tipoDespesa = TipoDespesa("Combustivel")
         insereTipoDespesa(db, tipoDespesa)
 
-        val despesa = Despesa(tipoDespesa.id, 20210623, 50.05f, carro.id)
+        val despesa = Despesa(tipoDespesa, 20210623, 50.05f, carro)
 
         insereDespesa(db, despesa)
 
@@ -463,7 +463,7 @@ class BaseDadosTest {
         val tipoDespesa = TipoDespesa("Combustivel")
         insereTipoDespesa(db, tipoDespesa)
 
-        val despesa = Despesa(tipoDespesa.id, 20210623, 60.52f, carro.id)
+        val despesa = Despesa(tipoDespesa, 20210623, 60.52f, carro)
         insereDespesa(db, despesa)
 
         val cursor = TabelaBDDespesas(db).query(
