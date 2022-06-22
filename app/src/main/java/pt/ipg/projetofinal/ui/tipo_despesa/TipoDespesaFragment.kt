@@ -48,7 +48,7 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this).initLoader(TipoDespesaFragment.ID_LOADER_TIPO_DESPESA, null, this)
 
-        adapterTipoDespesas = AdapterTipoDespesas()
+        adapterTipoDespesas = AdapterTipoDespesas(this)
         binding.recyclerViewTipoDespesa.adapter = adapterTipoDespesas
         binding.recyclerViewTipoDespesa.layoutManager = LinearLayoutManager(requireContext())
     }
