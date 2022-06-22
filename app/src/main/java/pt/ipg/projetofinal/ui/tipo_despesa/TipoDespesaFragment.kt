@@ -35,9 +35,9 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = FragmentTipoDespesaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textTipoDespesa
+        //val textView: TextView = binding.textTipoDespesa
         tipoDespesaViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            //textView.text = it
         }
         return root
     }

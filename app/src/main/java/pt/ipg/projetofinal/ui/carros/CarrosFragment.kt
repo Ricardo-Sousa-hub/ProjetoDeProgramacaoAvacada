@@ -34,9 +34,9 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = FragmentCarrosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textCarros
+        //val textView: TextView = binding.textCarros
         carrosViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            //textView.text = it
         }
         return root
     }

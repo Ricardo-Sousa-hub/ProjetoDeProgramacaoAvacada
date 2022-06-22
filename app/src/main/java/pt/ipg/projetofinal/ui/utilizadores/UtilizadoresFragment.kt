@@ -35,9 +35,9 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = FragmentUtilizadoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textUtilizadores
+        //val textView: TextView = binding.textUtilizadores
         utilizadoresViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            //textView.text = it
         }
         return root
     }
