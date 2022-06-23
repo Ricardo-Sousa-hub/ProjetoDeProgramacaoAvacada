@@ -43,15 +43,15 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonInserirUtilizador.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_utilizadores_to_inserirUtilizadorFragment)
-        }
-
         LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
 
         adapterUtilizadores = AdapterUtilizadores(this)
         binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.buttonInserirUtilizador.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_utilizadores_to_inserirUtilizadorFragment)
+        }
 
     }
 

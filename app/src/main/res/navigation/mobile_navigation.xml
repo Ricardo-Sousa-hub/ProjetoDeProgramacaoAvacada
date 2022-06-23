@@ -19,7 +19,11 @@
         android:id="@+id/navigation_carros"
         android:name="pt.ipg.projetofinal.ui.carros.CarrosFragment"
         android:label="@string/title_carros"
-        tools:layout="@layout/fragment_carros" />
+        tools:layout="@layout/fragment_carros" >
+        <action
+            android:id="@+id/action_navigation_carros_to_navigation_inserir_Carro"
+            app:destination="@id/navigation_inserir_Carro" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_tipo_despesa"
@@ -41,4 +45,9 @@
         android:name="pt.ipg.projetofinal.InserirUtilizadorFragment"
         android:label="@string/inserir_novo_utilizador"
         tools:layout="@layout/fragment_inserir_utilizador" />
+    <fragment
+        android:id="@+id/navigation_inserir_Carro"
+        android:name="pt.ipg.projetofinal.InserirCarroFragment"
+        android:label="fragment_inserir_carro"
+        tools:layout="@layout/fragment_inserir_carro" />
 </navigation>

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentCarrosBinding
@@ -51,6 +52,10 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         adapterCarros = AdapterCarros(this)
         binding.recyclerViewCarros.adapter = adapterCarros
         binding.recyclerViewCarros.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.buttonInserirCarro.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_carros_to_navigation_inserir_Carro)
+        }
     }
 
     override fun onDestroyView() {

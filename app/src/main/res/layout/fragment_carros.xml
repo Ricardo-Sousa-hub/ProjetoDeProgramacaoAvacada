@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.carros.CarrosFragment">
 
+    <Button
+        android:id="@+id/buttonInserirCarro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/inserir_novo_carro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCarros"
         android:layout_width="match_parent"
