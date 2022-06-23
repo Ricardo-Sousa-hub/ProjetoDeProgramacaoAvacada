@@ -31,14 +31,18 @@
         android:label="@string/title_tipo_despesa"
         tools:layout="@layout/fragment_tipo_despesa" >
         <action
-            android:id="@+id/action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment"
+            android:id="@+id/action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment2"
             app:destination="@id/inserirTipoDeDespesaFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_despesas"
         android:name="pt.ipg.projetofinal.ui.despesas.DespesasFragment"
         android:label="@string/title_despesas"
-        tools:layout="@layout/fragment_despesas" />
+        tools:layout="@layout/fragment_despesas" >
+        <action
+            android:id="@+id/action_navigation_despesas_to_inserirDespesaFragment"
+            app:destination="@id/inserirDespesaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_estatistica"
         android:name="pt.ipg.projetofinal.ui.estatistica.EstatisticaFragment"
@@ -54,6 +58,11 @@
         android:name="pt.ipg.projetofinal.InserirCarroFragment"
         android:label="fragment_inserir_carro"
         tools:layout="@layout/fragment_inserir_carro" />
+    <fragment
+        android:id="@+id/inserirDespesaFragment"
+        android:name="pt.ipg.projetofinal.InserirDespesaFragment"
+        android:label="fragment_inserir_despesa"
+        tools:layout="@layout/fragment_inserir_despesa" />
     <fragment
         android:id="@+id/inserirTipoDeDespesaFragment"
         android:name="pt.ipg.projetofinal.inserirTipoDeDespesaFragment"

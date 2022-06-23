@@ -54,7 +54,7 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewTipoDespesa.layoutManager = LinearLayoutManager(requireContext())
 
         binding.buttonInserirTipoDespesa.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment)
+            findNavController().navigate(R.id.action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment2)
         }
     }
 
