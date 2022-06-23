@@ -57,7 +57,11 @@
         android:id="@+id/navigation_inserir_Carro"
         android:name="pt.ipg.projetofinal.InserirCarroFragment"
         android:label="fragment_inserir_carro"
-        tools:layout="@layout/fragment_inserir_carro" />
+        tools:layout="@layout/fragment_inserir_carro" >
+        <action
+            android:id="@+id/action_navigation_inserir_Carro_to_navigation_carros"
+            app:destination="@id/navigation_carros" />
+    </fragment>
     <fragment
         android:id="@+id/inserirDespesaFragment"
         android:name="pt.ipg.projetofinal.InserirDespesaFragment"
