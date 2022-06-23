@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentTipoDespesaBinding
@@ -51,6 +52,10 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         adapterTipoDespesas = AdapterTipoDespesas(this)
         binding.recyclerViewTipoDespesa.adapter = adapterTipoDespesas
         binding.recyclerViewTipoDespesa.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.buttonInserirTipoDespesa.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment)
+        }
     }
 
     override fun onDestroyView() {

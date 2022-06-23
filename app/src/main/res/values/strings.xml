@@ -9,4 +9,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="inserir_novo_utilizador">Inserir Novo Utilizador</string>
     <string name="inserir_novo_carro">Inserir Novo Carro</string>
+    <string name="inserir_tipo_despesa">Inserir Tipo De Despesa</string>
 </resources>
