@@ -10,11 +10,11 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import pt.ipg.projetofinal.databinding.FragmentInserirCarroBinding
-import pt.ipg.projetofinal.databinding.FragmentInserirDespesaBinding
+import pt.ipg.projetofinal.databinding.FragmentInserirTipoDeDespesaBinding
 
-class InserirDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class InserirTipoDeDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    private var _binding: FragmentInserirDespesaBinding? = null
+    private var _binding: FragmentInserirTipoDeDespesaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,7 +30,7 @@ class InserirDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inserir_despesa, container, false)
+        return inflater.inflate(R.layout.fragment_inserir_tipo_de_despesa, container, false)
     }
 
     /**
@@ -43,15 +43,9 @@ class InserirDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
-        CursorLoader(
-            requireContext(),
-            ContentProviderApp.ENDERECO_TIPO_DESPESA,
-            TabelaBDTipoDespesa.TODAS_COLUNAS,
-            null,
-            null,
-            TabelaBDTipoDespesa.NOME_DESPESA
-        )
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor>{
+        TODO()
+    }
 
     /**
      * Called when a previously created loader has finished its load.  Note

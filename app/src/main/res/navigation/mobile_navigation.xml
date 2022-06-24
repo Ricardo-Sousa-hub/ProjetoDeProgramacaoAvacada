@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_utilizadores_to_inserirUtilizadorFragment"
             app:destination="@id/navigation_inserir_Utilizador_Fragment" />
+        <action
+            android:id="@+id/action_navigation_utilizadores_to_navigation_carros"
+            app:destination="@id/navigation_carros" />
     </fragment>
 
     <fragment
@@ -52,7 +55,11 @@
         android:id="@+id/navigation_inserir_Utilizador_Fragment"
         android:name="pt.ipg.projetofinal.InserirUtilizadorFragment"
         android:label="@string/inserir_novo_utilizador"
-        tools:layout="@layout/fragment_inserir_utilizador" />
+        tools:layout="@layout/fragment_inserir_utilizador" >
+        <action
+            android:id="@+id/action_navigation_inserir_Utilizador_Fragment_to_navigation_utilizadores"
+            app:destination="@id/navigation_utilizadores" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_inserir_Carro"
         android:name="pt.ipg.projetofinal.InserirCarroFragment"
@@ -69,7 +76,7 @@
         tools:layout="@layout/fragment_inserir_despesa" />
     <fragment
         android:id="@+id/inserirTipoDeDespesaFragment"
-        android:name="pt.ipg.projetofinal.inserirTipoDeDespesaFragment"
+        android:name="pt.ipg.projetofinal.InserirTipoDeDespesaFragment"
         android:label="fragment_inserir_tipo_de_despesa"
         tools:layout="@layout/fragment_inserir_tipo_de_despesa" />
 </navigation>

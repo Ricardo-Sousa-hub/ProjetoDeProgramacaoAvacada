@@ -37,9 +37,9 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = FragmentCarrosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val textView: TextView = binding.textCarros
+        //val textView0: TextView = binding.textCarros
         carrosViewModel.text.observe(viewLifecycleOwner) {
-            //textView.text = it
+            //textView0.text = it
         }
         return root
     }
@@ -47,7 +47,7 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        LoaderManager.getInstance(this).initLoader(CarrosFragment.ID_LOADER_CARROS, null, this)
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_CARROS, null, this)
 
         adapterCarros = AdapterCarros(this)
         binding.recyclerViewCarros.adapter = adapterCarros

@@ -11,4 +11,11 @@
     <string name="inserir_novo_carro">Inserir Novo Carro</string>
     <string name="inserir_tipo_despesa">Inserir Tipo De Despesa</string>
     <string name="inserir_despesa">Inserir Nova Despesa</string>
+    <string name="Nome_da_Despesa">Nome da Despesa</string>
+    <string name="inserir">Inserir</string>
+    <string name="selecione_tipo_despesa">Selecione um tipo de despesa</string>
+    <string name="data_despesa">Data da despesa</string>
+    <string name="valor_despesa">Valor da despesa</string>
+    <string name="selecionar_carro">Selecione o carro</string>
+    <string name="nome">Nome:</string>
 </resources>

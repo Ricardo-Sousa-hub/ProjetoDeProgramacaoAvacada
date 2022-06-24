@@ -3,6 +3,10 @@ package pt.ipg.projetofinal
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
 
@@ -18,8 +22,17 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
             }
         }
 
-    class ViewHolderUtilizador(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador), View.OnClickListener {
+        init {
+            itemUtilizador.setOnClickListener(this)
+        }
 
+        var navController: NavController? = null
+
+        override fun onClick(p0: View?) {
+            navController = Navigation.findNavController(itemView)
+            navController!!.navigate(R.id.action_navigation_utilizadores_to_navigation_carros)
+        }
     }
 
     /**
@@ -85,4 +98,6 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
 
         return cursor!!.count
     }
+
+
 }
