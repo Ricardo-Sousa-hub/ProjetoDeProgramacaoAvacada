@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
@@ -33,7 +34,21 @@ class InserirUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val v = inflater.inflate(R.layout.fragment_inserir_utilizador, container, false)
+
+        val button = v.findViewById<Button>(R.id.buttonInserirUtilizador1)
+
+        button.setOnClickListener(){
+            //TODO("Inserir utilziador na bd")
+        }
+
+
         return inflater.inflate(R.layout.fragment_inserir_utilizador, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     /**

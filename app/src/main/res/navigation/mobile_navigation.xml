@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_tipo_despesa" >
         <action
             android:id="@+id/action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment2"
-            app:destination="@id/inserirTipoDeDespesaFragment" />
+            app:destination="@id/navigation_inserir_Tipo_De_Despesa" />
     </fragment>
     <fragment
         android:id="@+id/navigation_despesas"
@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_despesas" >
         <action
             android:id="@+id/action_navigation_despesas_to_inserirDespesaFragment"
-            app:destination="@id/inserirDespesaFragment" />
+            app:destination="@id/navigation_inserir_Despesa_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_estatistica"
@@ -63,20 +63,28 @@
     <fragment
         android:id="@+id/navigation_inserir_Carro"
         android:name="pt.ipg.projetofinal.InserirCarroFragment"
-        android:label="fragment_inserir_carro"
-        tools:layout="@layout/fragment_inserir_carro" >
+        android:label="@string/inserir_novo_carro"
+        tools:layout="@layout/fragment_inserir_carro">
         <action
             android:id="@+id/action_navigation_inserir_Carro_to_navigation_carros"
             app:destination="@id/navigation_carros" />
     </fragment>
     <fragment
-        android:id="@+id/inserirDespesaFragment"
+        android:id="@+id/navigation_inserir_Despesa_Fragment"
         android:name="pt.ipg.projetofinal.InserirDespesaFragment"
-        android:label="fragment_inserir_despesa"
-        tools:layout="@layout/fragment_inserir_despesa" />
+        android:label="@string/inserir_despesa"
+        tools:layout="@layout/fragment_inserir_despesa">
+        <action
+            android:id="@+id/action_inserirDespesaFragment_to_navigation_despesas"
+            app:destination="@id/navigation_despesas" />
+    </fragment>
     <fragment
-        android:id="@+id/inserirTipoDeDespesaFragment"
+        android:id="@+id/navigation_inserir_Tipo_De_Despesa"
         android:name="pt.ipg.projetofinal.InserirTipoDeDespesaFragment"
-        android:label="fragment_inserir_tipo_de_despesa"
-        tools:layout="@layout/fragment_inserir_tipo_de_despesa" />
+        android:label="@string/inserir_tipo_despesa"
+        tools:layout="@layout/fragment_inserir_tipo_de_despesa">
+        <action
+            android:id="@+id/action_inserirTipoDeDespesaFragment_to_navigation_tipo_despesa"
+            app:destination="@id/navigation_tipo_despesa" />
+    </fragment>
 </navigation>

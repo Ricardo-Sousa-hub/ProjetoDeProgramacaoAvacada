@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.SimpleCursorAdapter
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
@@ -38,6 +39,14 @@ class InserirCarroFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        var v = inflater.inflate(R.layout.fragment_inserir_carro, container, false)
+
+        var button = v.findViewById<Button>(R.id.buttonInserirCarro1)
+
+        button.setOnClickListener(){
+            //TODO("Inserir carro na bd")
+        }
+
         return inflater.inflate(R.layout.fragment_inserir_carro, container, false)
     }
 

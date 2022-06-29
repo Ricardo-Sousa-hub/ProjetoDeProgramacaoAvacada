@@ -28,10 +28,6 @@ class EstatisticaFragment : Fragment() {
         _binding = FragmentEstatisticaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textEstatistica
-        tipoDespesaViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
@@ -30,6 +31,14 @@ class InserirDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        var v = inflater.inflate(R.layout.fragment_inserir_despesa, container, false)
+
+        var button = v.findViewById<Button>(R.id.buttonInserirDespesa1)
+
+        button.setOnClickListener(){
+            //TODO("Inserir despesa na bd")
+        }
+
         return inflater.inflate(R.layout.fragment_inserir_despesa, container, false)
     }
 
