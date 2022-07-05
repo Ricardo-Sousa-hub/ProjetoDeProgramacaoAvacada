@@ -11,6 +11,7 @@
     <string name="inserir_novo_carro">Inserir Novo Carro</string>
     <string name="inserir_tipo_despesa">Inserir Tipo De Despesa</string>
     <string name="inserir_despesa">Inserir Nova Despesa</string>
+    <string name="eliminar_utilizador">Eliminar Utilizador</string>
     <string name="Nome_da_Despesa">Nome da Despesa</string>
     <string name="inserir">Inserir</string>
     <string name="selecione_tipo_despesa">Selecione um tipo de despesa</string>
@@ -22,4 +23,6 @@
     <string name="aviso_apenas_letras">Por favor digite apenas letras</string>
     <string name="sucesso_inserir_utilizador">Livro inserido com sucesso.</string>
     <string name="falha_inserir_utilizador">Erro ao inserir utilizador</string>
+    <string name="insucesso_eliminar">Erro ao eliminar</string>
+    <string name="sucesso_eliminar">Eliminado com sucesso</string>
 </resources>

@@ -3,12 +3,13 @@ package pt.ipg.projetofinal
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 
 data class Utilizador(
     var nome: String,
     var data_nascimento: Long,
     var id: Long = -1
-    ) {
+    ) : Serializable {
 
     fun toContentValues() : ContentValues{
         val valores = ContentValues()

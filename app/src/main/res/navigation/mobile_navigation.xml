@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_utilizadores_to_navigation_carros"
             app:destination="@id/navigation_carros" />
+        <action
+            android:id="@+id/action_navigation_utilizadores_to_navigation_eliminar_utilizador"
+            app:destination="@id/navigation_eliminar_utilizador" />
     </fragment>
 
     <fragment
@@ -86,5 +89,17 @@
         <action
             android:id="@+id/action_inserirTipoDeDespesaFragment_to_navigation_tipo_despesa"
             app:destination="@id/navigation_tipo_despesa" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_eliminar_utilizador"
+        android:name="pt.ipg.projetofinal.EliminarUtilizador"
+        android:label="@string/eliminar_utilizador"
+        tools:layout="@layout/fragment_eliminar_utilizador" >
+        <argument
+            android:name="utilizador"
+            app:argType="pt.ipg.projetofinal.Utilizador" />
+        <action
+            android:id="@+id/action_navigation_eliminar_utilizador_to_navigation_utilizadores"
+            app:destination="@id/navigation_utilizadores" />
     </fragment>
 </navigation>

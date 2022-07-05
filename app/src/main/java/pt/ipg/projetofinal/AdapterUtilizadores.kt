@@ -1,13 +1,22 @@
 package pt.ipg.projetofinal
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.database.Cursor
+import android.net.Uri
+import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import pt.ipg.projetofinal.ui.eliminarUtilizador.EliminarUtilizadorFragment
 import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
+import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragmentDirections
 
 
 class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Adapter<AdapterUtilizadores.ViewHolderUtilizador>() {
@@ -23,12 +32,13 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
 
     var viewHolderSelecionado : ViewHolderUtilizador? = null
 
-    inner class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador), View.OnClickListener {
+    inner class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador), View.OnClickListener, View.OnLongClickListener {
 
         val textViewUserName = itemUtilizador.findViewById<TextView>(R.id.textViewNomeUtilizador)
 
         init {
             itemUtilizador.setOnClickListener(this)
+            itemUtilizador.setOnLongClickListener(this)
         }
 
         var utilizador : Utilizador? = null
@@ -43,13 +53,25 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
             seleciona()
         }
 
+        override fun onLongClick(p0: View?): Boolean {
+            SelecionaDelete()
+            return true
+        }
+
         var navController: NavController? = null
 
         private fun seleciona() {
+            viewHolderSelecionado = this
             navController = Navigation.findNavController(itemView)
             navController!!.navigate(R.id.action_navigation_utilizadores_to_navigation_carros)
         }
 
+        private fun SelecionaDelete(){
+            viewHolderSelecionado = this
+            fragment.utilizadorSeleccionado =utilizador
+            val acao = UtilizadoresFragmentDirections.actionNavigationUtilizadoresToNavigationEliminarUtilizador(fragment.utilizadorSeleccionado!!)
+            Navigation.findNavController(itemView).navigate(acao)
+        }
     }
 
     /**
@@ -116,6 +138,7 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
 
         return cursor!!.count
     }
+
 
 
 }
