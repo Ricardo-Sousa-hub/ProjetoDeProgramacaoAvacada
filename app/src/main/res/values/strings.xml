@@ -19,10 +19,11 @@
     <string name="valor_despesa">Valor da despesa</string>
     <string name="selecionar_carro">Selecione o carro</string>
     <string name="nome">Nome:</string>
-    <string name="aviso_digite_nome">Por favor digite o seu nome</string>
+    <string name="aviso_digite_nome">Por favor preencha o campo</string>
     <string name="aviso_apenas_letras">Por favor digite apenas letras</string>
-    <string name="sucesso_inserir_utilizador">Livro inserido com sucesso.</string>
-    <string name="falha_inserir_utilizador">Erro ao inserir utilizador</string>
+    <string name="sucesso_inserir_utilizador">Inserido com sucesso.</string>
+    <string name="falha_inserir_utilizador">Erro ao inserir</string>
     <string name="insucesso_eliminar">Erro ao eliminar</string>
     <string name="sucesso_eliminar">Eliminado com sucesso</string>
+    <string name="eliminar_tipo_despesa">Eliminar Tipo de Despesa</string>
 </resources>

@@ -3,8 +3,13 @@ package pt.ipg.projetofinal
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment
+import pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragmentDirections
+import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragmentDirections
 
 class AdapterTipoDespesas(val fragment: TipoDespesaFragment) : RecyclerView.Adapter<AdapterTipoDespesas.ViewHolderTipoDespesas>() {
 
@@ -17,7 +22,48 @@ class AdapterTipoDespesas(val fragment: TipoDespesaFragment) : RecyclerView.Adap
             }
         }
 
-    class ViewHolderTipoDespesas(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var viewHolderSelecionado : ViewHolderTipoDespesas? = null
+
+    inner class ViewHolderTipoDespesas(itemTipoDespesa: View) : RecyclerView.ViewHolder(itemTipoDespesa), View.OnClickListener, View.OnLongClickListener {
+
+        val textViewTipoDespesa = itemTipoDespesa.findViewById<TextView>(R.id.textViewNomeTipoDespesa)
+
+        init {
+            itemTipoDespesa.setOnClickListener(this)
+            itemTipoDespesa.setOnLongClickListener(this)
+        }
+
+        var tipoDespesas : TipoDespesa? = null
+            get() = field
+            set(value: TipoDespesa?) {
+                field = value
+
+                textViewTipoDespesa.text = tipoDespesas?.nome ?:""
+            }
+
+        override fun onClick(v: View?) {
+            seleciona()
+        }
+
+        override fun onLongClick(p0: View?): Boolean {
+            SelecionaDelete()
+            return true
+        }
+
+        var navController: NavController? = null
+
+        private fun seleciona() {
+            viewHolderSelecionado = this
+            navController = Navigation.findNavController(itemView)
+            navController!!.navigate(R.id.action_navigation_tipo_despesa_to_navigation_despesas)
+        }
+
+        private fun SelecionaDelete(){
+            viewHolderSelecionado = this
+            fragment.tipoDespesaSelecionado = tipoDespesas
+            val acao = TipoDespesaFragmentDirections.actionNavigationTipoDespesaToEliminarTipoDespesa(fragment.tipoDespesaSelecionado!!)
+            Navigation.findNavController(itemView).navigate(acao)
+        }
 
     }
 
@@ -45,8 +91,8 @@ class AdapterTipoDespesas(val fragment: TipoDespesaFragment) : RecyclerView.Adap
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTipoDespesas {
-        val itemTipoDespesas = fragment.layoutInflater.inflate(R.layout.fragment_tipo_despesa, parent, false)
-        return AdapterTipoDespesas.ViewHolderTipoDespesas(itemTipoDespesas)
+        val itemTipoDespesas = fragment.layoutInflater.inflate(R.layout.item_tipo_despesa, parent, false)
+        return ViewHolderTipoDespesas(itemTipoDespesas)
     }
 
     /**
@@ -71,7 +117,8 @@ class AdapterTipoDespesas(val fragment: TipoDespesaFragment) : RecyclerView.Adap
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderTipoDespesas, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.moveToPosition(position)
+        holder.tipoDespesas = TipoDespesa.fromCursor(cursor!!)
     }
 
     /**

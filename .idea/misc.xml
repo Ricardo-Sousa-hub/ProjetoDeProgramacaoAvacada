@@ -18,16 +18,19 @@
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/activity_pixa.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_carros.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_despesas.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_eliminar_tipo_despesa.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_eliminar_utilizador.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_estatistica.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_inserir_carro.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_inserir_despesa.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_inserir_tipo_de_despesa.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_inserir_utilizador.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_item_tipo_despesa.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_item_utilizador.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_tipo_despesa.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/fragment_utilizadores.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/item_tipo_despesa.xml" value="0.264" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/layout/item_utilizador.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
         <entry key="..\:/Users/Ricardo Sousa/AndroidStudioProjects/ProjetoFinal/app/src/main/res/menu/menu_eliminar.xml" value="0.24895833333333334" />

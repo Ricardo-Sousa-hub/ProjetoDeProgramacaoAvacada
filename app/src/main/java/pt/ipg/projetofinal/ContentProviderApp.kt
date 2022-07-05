@@ -78,8 +78,8 @@ class ContentProviderApp : ContentProvider() {
             URI_TIPO_COMBUSTIVEL -> TabelaBDTipoCombustivel(db).insert(values)
             URI_MODELO -> TabelaBDModelos(db).insert(values)
             URI_CARRO -> TabelaBDCarros(db).insert(values)
-            URI_TIPO_DESPESA -> TabelaBDCarros(db).insert(values)
-            URI_DESPESA -> TabelaBDCarros(db).insert(values)
+            URI_TIPO_DESPESA -> TabelaBDTipoDespesa(db).insert(values)
+            URI_DESPESA -> TabelaBDDespesas(db).insert(values)
             else -> -1
         }
 

@@ -11,23 +11,24 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import pt.ipg.projetofinal.databinding.FragmentEliminarTipoDespesaBinding
 import pt.ipg.projetofinal.databinding.FragmentEliminarUtilizadorBinding
 
-class EliminarUtilizador : Fragment() {
+class EliminarTipoDespesa : Fragment() {
 
-    private var _binding: FragmentEliminarUtilizadorBinding? = null
+    private var _binding: FragmentEliminarTipoDespesaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private lateinit var utilizador: Utilizador
+    private lateinit var tipoDespesa: TipoDespesa
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEliminarUtilizadorBinding.inflate(inflater, container, false)
+        _binding = FragmentEliminarTipoDespesaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,23 +41,23 @@ class EliminarUtilizador : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val activity = requireActivity() as MainActivity
-        activity.findViewById<Button>(R.id.buttonEliminarUtilizador).setOnClickListener(){
-            eliminarUtilizador()
+        activity.findViewById<Button>(R.id.buttonEliminarTipoDespesa).setOnClickListener(){
+            eliminarTipoDespesa()
         }
 
-        utilizador = EliminarUtilizadorArgs.fromBundle(arguments!!).utilizador
+        tipoDespesa = EliminarTipoDespesaArgs.fromBundle(arguments!!).tipoDeDespesa
 
-        binding.textViewNome.text = utilizador.nome
+        binding.textViewNomeEliminarTipoDespesa.text = tipoDespesa.nome
 
     }
 
-    private fun eliminarUtilizador() {
-        val enderecoUtilizador = Uri.withAppendedPath(ContentProviderApp.ENDERECO_UTILIZADOR, "${utilizador.id}")
-        val registosEliminados = requireActivity().contentResolver.delete(enderecoUtilizador, null, null)
+    private fun eliminarTipoDespesa() {
+        val enderecoTipoDespesa = Uri.withAppendedPath(ContentProviderApp.ENDERECO_TIPO_DESPESA, "${tipoDespesa.id}")
+        val registosEliminados = requireActivity().contentResolver.delete(enderecoTipoDespesa, null, null)
 
         if (registosEliminados != 1) {
             Snackbar.make(
-                binding.textViewNome,
+                binding.textViewNomeEliminarTipoDespesa,
                 R.string.insucesso_eliminar,
                 Snackbar.LENGTH_INDEFINITE
             ).show()
@@ -64,11 +65,11 @@ class EliminarUtilizador : Fragment() {
         }
 
         Toast.makeText(requireContext(), R.string.sucesso_eliminar, Toast.LENGTH_LONG).show()
-        voltaListaUtilizadores()
+        voltaListaTipoDespesa()
     }
 
-    private fun voltaListaUtilizadores() {
-        findNavController().navigate(R.id.action_navigation_eliminar_utilizador_to_navigation_utilizadores)
+    private fun voltaListaTipoDespesa() {
+        findNavController().navigate(R.id.action_eliminarTipoDespesa_to_navigation_tipo_despesa)
     }
 
 }

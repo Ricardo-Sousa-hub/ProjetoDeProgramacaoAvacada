@@ -37,8 +37,14 @@
         android:label="@string/title_tipo_despesa"
         tools:layout="@layout/fragment_tipo_despesa" >
         <action
-            android:id="@+id/action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment2"
+            android:id="@+id/action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment"
             app:destination="@id/navigation_inserir_Tipo_De_Despesa" />
+        <action
+            android:id="@+id/action_navigation_tipo_despesa_to_eliminarTipoDespesa"
+            app:destination="@id/eliminarTipoDespesa" />
+        <action
+            android:id="@+id/action_navigation_tipo_despesa_to_navigation_despesas"
+            app:destination="@id/navigation_despesas" />
     </fragment>
     <fragment
         android:id="@+id/navigation_despesas"
@@ -101,5 +107,17 @@
         <action
             android:id="@+id/action_navigation_eliminar_utilizador_to_navigation_utilizadores"
             app:destination="@id/navigation_utilizadores" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarTipoDespesa"
+        android:name="pt.ipg.projetofinal.EliminarTipoDespesa"
+        android:label="@string/eliminar_tipo_despesa"
+        tools:layout="@layout/fragment_eliminar_tipo_despesa">
+        <action
+            android:id="@+id/action_eliminarTipoDespesa_to_navigation_tipo_despesa"
+            app:destination="@id/navigation_tipo_despesa" />
+        <argument
+            android:name="tipoDeDespesa"
+            app:argType="pt.ipg.projetofinal.TipoDespesa" />
     </fragment>
 </navigation>

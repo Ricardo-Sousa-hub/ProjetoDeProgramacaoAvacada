@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
@@ -15,9 +13,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentTipoDespesaBinding
-import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
 
 class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+
+    var tipoDespesaSelecionado : TipoDespesa? = null
+        get() = field
+        set(value) {
+            field = value
+        }
 
     private var _binding: FragmentTipoDespesaBinding? = null
     private var adapterTipoDespesas : AdapterTipoDespesas? = null
@@ -31,17 +34,8 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val tipoDespesaViewModel =
-            ViewModelProvider(this).get(TipoDespesaViewModel::class.java)
-
         _binding = FragmentTipoDespesaBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        //val textView0: TextView = binding.textTipoDespesa
-        tipoDespesaViewModel.text.observe(viewLifecycleOwner) {
-            //textView0.text = it
-        }
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +48,7 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewTipoDespesa.layoutManager = LinearLayoutManager(requireContext())
 
         binding.buttonInserirTipoDespesa.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment2)
+            findNavController().navigate(R.id.action_navigation_tipo_despesa_to_inserirTipoDeDespesaFragment)
         }
     }
 
