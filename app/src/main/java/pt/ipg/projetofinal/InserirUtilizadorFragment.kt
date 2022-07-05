@@ -1,5 +1,6 @@
 package pt.ipg.projetofinal
 
+import android.app.Activity
 import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import pt.ipg.projetofinal.databinding.FragmentInserirTipoDeDespesaBinding
 import pt.ipg.projetofinal.databinding.FragmentInserirUtilizadorBinding
+import java.util.*
 
 
 class InserirUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -24,31 +27,71 @@ class InserirUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_inserir_utilizador, container, false)
+        _binding = FragmentInserirUtilizadorBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val button = v.findViewById<Button>(R.id.buttonInserirUtilizador1)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-        button.setOnClickListener(){
-            //TODO("Inserir utilziador na bd")
+    fun guardarUtilizador(){
+        val nome = binding.editTextTextInserirNome.text.toString()
+        if(nome.isBlank()){
+            binding.editTextTextInserirNome.error = getString(R.string.aviso_digite_nome)
+            binding.editTextTextInserirNome.requestFocus()
+            return
         }
 
+        if(nome.isDigitsOnly()){
+            binding.editTextTextInserirNome.error = getString(R.string.aviso_apenas_letras)
+            binding.editTextTextInserirNome.requestFocus()
+            return
+        }
 
-        return inflater.inflate(R.layout.fragment_inserir_utilizador, container, false)
+        var data : Long = 0
+
+        binding.calendarViewDataUtilizador.setOnDateChangeListener(){
+            calendarView, ano, mes, dia ->
+            val date = Calendar.getInstance()
+            date.set(ano, mes, dia)
+            data = date.timeInMillis
+        }
+
+        val utilizador = Utilizador(nome, data)
+
+        val endereco = requireActivity().contentResolver.insert(
+            ContentProviderApp.ENDERECO_UTILIZADOR,
+            utilizador.toContentValues()
+        )
+
+        if(endereco != null){
+            Toast.makeText(requireContext(), getString(R.string.sucesso_inserir_utilizador), Toast.LENGTH_LONG).show()
+            Limpar()
+        }
+        else{
+            Snackbar.make(binding.editTextTextInserirNome, getString(R.string.falha_inserir_utilizador), Snackbar.LENGTH_INDEFINITE).show()
+        }
+
+    }
+
+    fun Limpar(){
+        binding.editTextTextInserirNome.text.clear()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val activity = requireActivity() as MainActivity
+        activity.findViewById<Button>(R.id.buttonInserirUtilizador1).setOnClickListener(){
+            guardarUtilizador()
+        }
     }
 
     /**

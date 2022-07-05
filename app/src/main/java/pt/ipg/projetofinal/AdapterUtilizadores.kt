@@ -3,10 +3,9 @@ package pt.ipg.projetofinal
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
 
@@ -22,17 +21,35 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
             }
         }
 
-    class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador), View.OnClickListener {
+    var viewHolderSelecionado : ViewHolderUtilizador? = null
+
+    inner class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador), View.OnClickListener {
+
+        val textViewUserName = itemUtilizador.findViewById<TextView>(R.id.textViewNomeUtilizador)
+
         init {
             itemUtilizador.setOnClickListener(this)
         }
 
+        var utilizador : Utilizador? = null
+            get() = field
+            set(value: Utilizador?) {
+                field = value
+
+                textViewUserName.text = utilizador?.nome ?:""
+            }
+
+        override fun onClick(v: View?) {
+            seleciona()
+        }
+
         var navController: NavController? = null
 
-        override fun onClick(p0: View?) {
+        private fun seleciona() {
             navController = Navigation.findNavController(itemView)
             navController!!.navigate(R.id.action_navigation_utilizadores_to_navigation_carros)
         }
+
     }
 
     /**
@@ -59,8 +76,8 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderUtilizador {
-        val itemUtilizadores = fragment.layoutInflater.inflate(R.layout.fragment_utilizadores, parent, false)
-        return AdapterUtilizadores.ViewHolderUtilizador(itemUtilizadores)
+        val itemUtilizador = fragment.layoutInflater.inflate(R.layout.item_utilizador, parent, false)
+        return ViewHolderUtilizador(itemUtilizador)
     }
 
     /**
@@ -85,7 +102,8 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderUtilizador, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.moveToPosition(position)
+        holder.utilizador = Utilizador.fromCursor(cursor!!)
     }
 
     /**

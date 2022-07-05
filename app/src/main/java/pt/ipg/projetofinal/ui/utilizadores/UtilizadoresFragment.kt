@@ -5,20 +5,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.projetofinal.databinding.FragmentUtilizadoresBinding
 import androidx.navigation.fragment.findNavController
-
-import androidx.navigation.fragment.findNavController
 import pt.ipg.projetofinal.*
 
 class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+
+    var utilizadorSeleccionado : Utilizador? = null
+        get() = field
+        set(value) {
+            field = value
+        }
 
     private var _binding: FragmentUtilizadoresBinding? = null
     private var adapterUtilizadores : AdapterUtilizadores? = null
@@ -32,11 +35,7 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val utilizadoresViewModel =
-            ViewModelProvider(this).get(UtilizadoresViewModel::class.java)
-
         _binding = FragmentUtilizadoresBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -49,10 +48,11 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
 
-        binding.buttonInserirUtilizador.setOnClickListener {
+        val activity = requireActivity()
+
+        binding.buttonInserirUtilizador.setOnClickListener() {
             findNavController().navigate(R.id.action_navigation_utilizadores_to_inserirUtilizadorFragment)
         }
-
     }
 
     override fun onDestroyView() {
@@ -77,7 +77,7 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             TabelaBDUtilizadores.TODAS_COLUNAS,
             null,
             null,
-            "${TabelaBDUtilizadores.NOME}"
+            TabelaBDUtilizadores.NOME
         )
 
     /**

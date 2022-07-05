@@ -18,4 +18,8 @@
     <string name="valor_despesa">Valor da despesa</string>
     <string name="selecionar_carro">Selecione o carro</string>
     <string name="nome">Nome:</string>
+    <string name="aviso_digite_nome">Por favor digite o seu nome</string>
+    <string name="aviso_apenas_letras">Por favor digite apenas letras</string>
+    <string name="sucesso_inserir_utilizador">Livro inserido com sucesso.</string>
+    <string name="falha_inserir_utilizador">Erro ao inserir utilizador</string>
 </resources>
