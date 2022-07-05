@@ -15,9 +15,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentCarrosBinding
+import pt.ipg.projetofinal.databinding.FragmentUtilizadoresBinding
 import pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment
+import java.io.CharArrayReader
 
 class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+
+    var carroSelecionado : Carro? = null
+        get() = field
+        set(value) {
+            field = value
+        }
 
     private var _binding: FragmentCarrosBinding? = null
     private var adapterCarros : AdapterCarros? = null
@@ -31,17 +39,8 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val carrosViewModel =
-            ViewModelProvider(this).get(CarrosViewModel::class.java)
-
         _binding = FragmentCarrosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        //val textView0: TextView = binding.textCarros
-        carrosViewModel.text.observe(viewLifecycleOwner) {
-            //textView0.text = it
-        }
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +53,8 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewCarros.layoutManager = LinearLayoutManager(requireContext())
 
         binding.buttonInserirCarro.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_carros_to_navigation_inserir_Carro)
+            val utilizador = CarrosFragmentArgs.fromBundle(arguments!!).utilizador
+            findNavController().navigate(CarrosFragmentDirections.actionNavigationCarrosToNavigationInserirCarro(utilizador))
         }
     }
 
@@ -79,7 +79,7 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             TabelaBDCarros.TODAS_COLUNAS,
             null,
             null,
-            "${TabelaBDCarros.ID_MODELO}"
+            TabelaBDCarros.ID_MODELO
         )
 
     /**

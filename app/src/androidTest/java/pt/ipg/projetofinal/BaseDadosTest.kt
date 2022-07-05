@@ -175,7 +175,7 @@ class BaseDadosTest {
         val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro(2020, combustivel.id, modelo, utilizador)
+        val carro = Carro(2020, combustivel, modelo, utilizador)
         insereCarro(db, carro)
 
         db.close()
@@ -196,7 +196,7 @@ class BaseDadosTest {
         val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro(2020, combustivel.id, modelo, utilizador)
+        val carro = Carro(2020, combustivel, modelo, utilizador)
         insereCarro(db, carro)
 
         carro.data = 1999
@@ -255,7 +255,7 @@ class BaseDadosTest {
         val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro(2020, combustivel.id, modelo, utilizador)
+        val carro = Carro(2020, combustivel, modelo, utilizador)
         insereCarro(db, carro)
 
         val tipoDespesa = TipoDespesa("Combustivel")
@@ -281,7 +281,7 @@ class BaseDadosTest {
         val modelo = Modelo("BMW X6", 2020)
         insereModelo(db, modelo)
 
-        val carro = Carro(2020, combustivel.id, modelo, utilizador)
+        val carro = Carro(2020, combustivel, modelo, utilizador)
         insereCarro(db, carro)
 
         val tipoDespesa = TipoDespesa("Combustivel")
@@ -397,7 +397,7 @@ class BaseDadosTest {
         insereCombustivel(db, combustivel)
         insereUtilizador(db, utilizador)
 
-        val carro = Carro(25062020, combustivel.id, modelo, utilizador)
+        val carro = Carro(25062020, combustivel, modelo, utilizador)
 
         insereCarro(db, carro)
 
@@ -457,7 +457,7 @@ class BaseDadosTest {
         insereCombustivel(db, combustivel)
         insereModelo(db, modelo)
 
-        val carro = Carro(2020, combustivel.id, modelo, utilizador)
+        val carro = Carro(2020, combustivel, modelo, utilizador)
         insereCarro(db, carro)
 
         val tipoDespesa = TipoDespesa("Combustivel")

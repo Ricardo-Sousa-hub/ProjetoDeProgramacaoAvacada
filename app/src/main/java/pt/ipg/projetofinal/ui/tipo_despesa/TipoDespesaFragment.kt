@@ -74,7 +74,7 @@ class TipoDespesaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             TabelaBDTipoDespesa.TODAS_COLUNAS,
             null,
             null,
-            "${TabelaBDTipoDespesa.NOME_DESPESA}"
+            TabelaBDTipoDespesa.NOME_DESPESA
         )
 
     /**

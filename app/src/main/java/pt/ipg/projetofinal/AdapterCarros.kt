@@ -4,8 +4,12 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.projetofinal.ui.carros.CarrosFragment
+import pt.ipg.projetofinal.ui.carros.CarrosFragmentDirections
+import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragmentDirections
 
 class AdapterCarros(val fragment: CarrosFragment) : RecyclerView.Adapter<AdapterCarros.ViewHolderCarros>() {
 
@@ -18,7 +22,49 @@ class AdapterCarros(val fragment: CarrosFragment) : RecyclerView.Adapter<Adapter
             }
         }
 
-    class ViewHolderCarros(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var viewHolderSelecionado : AdapterCarros.ViewHolderCarros? = null
+
+    inner class ViewHolderCarros(itemCarros: View) : RecyclerView.ViewHolder(itemCarros), View.OnClickListener, View.OnLongClickListener{
+        val textViewModelo = itemCarros.findViewById<TextView>(R.id.textViewModelo)
+        val textViewCombustivel = itemCarros.findViewById<TextView>(R.id.textViewCombustivel)
+
+        init {
+            itemCarros.setOnClickListener(this)
+            itemCarros.setOnLongClickListener(this)
+        }
+
+        var carro : Carro? = null
+            get() = field
+            set(value: Carro?) {
+                field = value
+
+                textViewModelo.text = carro?.modelo?.nome ?:""
+                textViewCombustivel.text = carro?.combustivel?.nome ?: ""
+            }
+
+        override fun onClick(p0: View?) {
+            seleciona()
+        }
+
+        override fun onLongClick(p0: View?): Boolean {
+            SelecionaDelete()
+            return true
+        }
+
+        var navController: NavController? = null
+
+        private fun seleciona() {
+            viewHolderSelecionado = this
+            navController = Navigation.findNavController(itemView)
+            navController!!.navigate(R.id.action_navigation_carros_to_navigation_tipo_despesa)
+        }
+
+        private fun SelecionaDelete(){
+            viewHolderSelecionado = this
+            fragment.carroSelecionado = carro
+            val acao = CarrosFragmentDirections.actionNavigationCarrosToEliminarCarro(fragment.carroSelecionado!!)
+            Navigation.findNavController(itemView).navigate(acao)
+        }
 
     }
 
@@ -46,8 +92,8 @@ class AdapterCarros(val fragment: CarrosFragment) : RecyclerView.Adapter<Adapter
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderCarros {
-        val itemLivro = fragment.layoutInflater.inflate(R.layout.fragment_carros, parent, false)
-        return ViewHolderCarros(itemLivro)
+        val itemCarro = fragment.layoutInflater.inflate(R.layout.item_carros, parent, false)
+        return ViewHolderCarros(itemCarro)
     }
 
     /**
@@ -72,7 +118,8 @@ class AdapterCarros(val fragment: CarrosFragment) : RecyclerView.Adapter<Adapter
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderCarros, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.moveToPosition(position)
+        holder.carro = Carro.fromCursor(cursor!!)
     }
 
     /**

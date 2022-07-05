@@ -34,6 +34,7 @@ data class Despesa(
             val posIdCarro = cursor.getColumnIndex(TabelaBDDespesas.ID_CARRO)
             val posDataCarro = cursor.getColumnIndex(TabelaBDCarros.DATA)
             val posIdCombustivel = cursor.getColumnIndex(TabelaBDCarros.ID_TIPO_COMBUSTIVEL)
+            val posNomeCombustivel = cursor.getColumnIndex(TabelaBDTipoCombustivel.NOME_COMBUSTIVEL)
             val posIdModelo = cursor.getColumnIndex(TabelaBDCarros.ID_MODELO)
             val posIdUtilizador = cursor.getColumnIndex(TabelaBDCarros.ID_UTILIZADOR)
 
@@ -46,6 +47,7 @@ data class Despesa(
             val idCarro = cursor.getLong(posIdCarro)
             val dataCarro = cursor.getLong(posDataCarro)
             val idCombustivel = cursor.getLong(posIdCombustivel)
+            val nomeCombustivel = cursor.getString(posNomeCombustivel)
             val idModelo = cursor.getLong(posIdModelo)
             val idUtilizador = cursor.getLong(posIdUtilizador)
 
@@ -61,7 +63,9 @@ data class Despesa(
             val dataUtilizador = cursor.getLong(posDataUtilizador)
             val utilizador = Utilizador(nomeUtilizador, dataUtilizador, idUtilizador)
 
-            val carro = Carro(dataCarro, idCombustivel, modeloCarro, utilizador, idCarro)
+            val combustivel = Combustivel(nomeCombustivel, idCombustivel)
+
+            val carro = Carro(dataCarro, combustivel, modeloCarro, utilizador, idCarro)
 
             return Despesa(tipoDespesa, data, valorDespesa, carro, id)
         }

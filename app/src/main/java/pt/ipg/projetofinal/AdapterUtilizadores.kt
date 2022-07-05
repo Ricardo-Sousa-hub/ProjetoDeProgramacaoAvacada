@@ -1,20 +1,12 @@
 package pt.ipg.projetofinal
 
-import android.app.AlertDialog
-import android.content.DialogInterface
-import android.content.Intent
 import android.database.Cursor
-import android.net.Uri
-import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import pt.ipg.projetofinal.ui.eliminarUtilizador.EliminarUtilizadorFragment
 import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragment
 import pt.ipg.projetofinal.ui.utilizadores.UtilizadoresFragmentDirections
 
@@ -62,8 +54,9 @@ class AdapterUtilizadores(val fragment: UtilizadoresFragment) : RecyclerView.Ada
 
         private fun seleciona() {
             viewHolderSelecionado = this
-            navController = Navigation.findNavController(itemView)
-            navController!!.navigate(R.id.action_navigation_utilizadores_to_navigation_carros)
+            fragment.utilizadorSeleccionado =utilizador
+            val acao = UtilizadoresFragmentDirections.actionNavigationUtilizadoresToNavigationCarros(fragment.utilizadorSeleccionado!!)
+            Navigation.findNavController(itemView).navigate(acao)
         }
 
         private fun SelecionaDelete(){

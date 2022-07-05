@@ -50,6 +50,9 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
 
+        //inserirTiposDeCombustivel()
+        //inserirModelos()
+
         binding.buttonInserirUtilizador.setOnClickListener() {
             findNavController().navigate(R.id.action_navigation_utilizadores_to_inserirUtilizadorFragment)
         }
@@ -143,5 +146,23 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     companion object{
         const val ID_LOADER_UTILIZADORES = 0
+    }
+
+    private fun inserirTiposDeCombustivel(){
+
+        val eletricidade = Combustivel("Eletricidade")
+
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_TIPO_COMBUSTIVEL, eletricidade.toContentValues())
+    }
+
+    private fun inserirModelos(){
+
+        val bmw = Modelo("BMW X6", 5062020)
+        val audi = Modelo("AUDI A6", 2082015)
+        val mercedes = Modelo("MERCEDES BENZ", 25062012)
+
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_MODELO, bmw.toContentValues())
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_MODELO, audi.toContentValues())
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_MODELO, mercedes.toContentValues())
     }
 }

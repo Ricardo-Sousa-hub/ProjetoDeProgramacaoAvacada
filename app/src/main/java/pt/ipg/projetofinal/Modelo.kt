@@ -5,8 +5,8 @@ import android.database.Cursor
 import android.provider.BaseColumns
 
 data class Modelo(
-    var nome: String,
-    var data: Long,
+    var nome: String = "",
+    var data: Long = -1,
     var id: Long = -1
 ) {
 
