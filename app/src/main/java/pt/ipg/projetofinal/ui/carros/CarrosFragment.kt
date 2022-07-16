@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
@@ -53,8 +54,13 @@ class CarrosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewCarros.layoutManager = LinearLayoutManager(requireContext())
 
         binding.buttonInserirCarro.setOnClickListener {
-            val utilizador = CarrosFragmentArgs.fromBundle(arguments!!).utilizador
-            findNavController().navigate(CarrosFragmentDirections.actionNavigationCarrosToNavigationInserirCarro(utilizador))
+            if(!requireArguments().isEmpty){
+                val utilizador = CarrosFragmentArgs.fromBundle(arguments!!).utilizador
+                findNavController().navigate(CarrosFragmentDirections.actionNavigationCarrosToNavigationInserirCarro(utilizador))
+            }
+            else{
+                Toast.makeText(requireContext(), getString(R.string.request_utilizador), Toast.LENGTH_LONG).show()
+            }
         }
     }
 

@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_navigation_despesas_to_inserirDespesaFragment"
             app:destination="@id/navigation_inserir_Despesa_Fragment" />
+        <argument
+            android:name="carro"
+            app:argType="pt.ipg.projetofinal.Carro" />
     </fragment>
     <fragment
         android:id="@+id/navigation_estatistica"
@@ -98,6 +101,9 @@
         <action
             android:id="@+id/action_inserirDespesaFragment_to_navigation_despesas"
             app:destination="@id/navigation_despesas" />
+        <argument
+            android:name="carro"
+            app:argType="pt.ipg.projetofinal.Carro" />
     </fragment>
     <fragment
         android:id="@+id/navigation_inserir_Tipo_De_Despesa"

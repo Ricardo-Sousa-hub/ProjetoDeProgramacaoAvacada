@@ -10,6 +10,10 @@ class TabelaBDTipoCombustivel(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
                 "$NOME_COMBUSTIVEL TEXT NOT NULL)")
     }
 
+    fun delete(){
+        db.execSQL("DELETE FROM $NOME_TABELA")
+    }
+
     companion object{
         const val NOME_TABELA = "tipo_combustivel"
         const val CAMPO_ID = "${TabelaBDTipoCombustivel.NOME_TABELA}.${BaseColumns._ID}"

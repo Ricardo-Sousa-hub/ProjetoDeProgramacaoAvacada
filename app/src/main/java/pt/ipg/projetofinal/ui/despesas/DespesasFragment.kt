@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.projetofinal.*
 import pt.ipg.projetofinal.databinding.FragmentDespesasBinding
+import pt.ipg.projetofinal.ui.carros.CarrosFragment
 import pt.ipg.projetofinal.ui.tipo_despesa.TipoDespesaFragment
 
 class DespesasFragment() : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -54,7 +56,14 @@ class DespesasFragment() : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewDespesas.layoutManager = LinearLayoutManager(requireContext())
 
         binding.buttonInserirDespesa.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_despesas_to_inserirDespesaFragment)
+            if (!requireArguments().isEmpty) {
+                val carro = DespesasFragmentArgs.fromBundle(arguments!!).carro
+                findNavController().navigate(
+                    DespesasFragmentDirections.actionNavigationDespesasToInserirDespesaFragment(carro))
+            }
+            else{
+                Toast.makeText(requireContext(), getString(R.string.request_carro), Toast.LENGTH_LONG).show()
+            }
         }
     }
 

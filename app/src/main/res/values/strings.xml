@@ -26,4 +26,6 @@
     <string name="insucesso_eliminar">Erro ao eliminar</string>
     <string name="sucesso_eliminar">Eliminado com sucesso</string>
     <string name="eliminar_tipo_despesa">Eliminar Tipo de Despesa</string>
+    <string name="request_utilizador">Por favor selecione um utilizador</string>
+    <string name="request_carro">Por favor selecione um carro</string>
 </resources>
