@@ -39,7 +39,6 @@ data class Carro(
 
             val posIdUtilizador = cursor.getColumnIndex(TabelaBDCarros.ID_UTILIZADOR)
             val posNomeUtilizador = cursor.getColumnIndex(TabelaBDUtilizadores.NOME)
-            val posDataUtilizador = cursor.getColumnIndex(TabelaBDUtilizadores.DATA_NASCIMENTO)
 
             val id = cursor.getLong(posId)
             val data = cursor.getLong(posData)
@@ -57,9 +56,8 @@ data class Carro(
 
             val idUtilizador = cursor.getLong(posIdUtilizador)
             val nomeUtilizador = cursor.getString(posNomeUtilizador)
-            val dataUtilizador = cursor.getLong(posDataUtilizador)
 
-            val utilizador = Utilizador(nomeUtilizador, dataUtilizador, idUtilizador)
+            val utilizador = Utilizador(nomeUtilizador, idUtilizador)
 
             return Carro(data, combustivel, modelo, utilizador, id)
         }

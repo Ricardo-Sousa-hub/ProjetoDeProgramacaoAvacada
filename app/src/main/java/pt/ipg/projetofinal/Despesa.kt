@@ -58,10 +58,8 @@ data class Despesa(
             val modeloCarro = Modelo(nomeModelo, idModelo)
 
             val posNomeUtilizador = cursor.getColumnIndex(TabelaBDUtilizadores.NOME)
-            val posDataUtilizador = cursor.getColumnIndex(TabelaBDUtilizadores.DATA_NASCIMENTO)
             val nomeUtilizador = cursor.getString(posNomeUtilizador)
-            val dataUtilizador = cursor.getLong(posDataUtilizador)
-            val utilizador = Utilizador(nomeUtilizador, dataUtilizador, idUtilizador)
+            val utilizador = Utilizador(nomeUtilizador, idUtilizador)
 
             val combustivel = Combustivel(nomeCombustivel, idCombustivel)
 

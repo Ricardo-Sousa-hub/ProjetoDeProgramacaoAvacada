@@ -55,7 +55,7 @@ class BaseDadosTest {
         assertNotEquals(-1, despesa.id)
     }
 
-    @Test
+    @Before
     fun apagarBaseDados(){
         appContext().deleteDatabase(BDAppOpenHelper.NOME)
     }

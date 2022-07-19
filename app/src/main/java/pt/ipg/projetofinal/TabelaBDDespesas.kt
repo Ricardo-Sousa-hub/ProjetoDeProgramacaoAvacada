@@ -26,13 +26,9 @@ class TabelaBDDespesas(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         orderBy: String?
     ): Cursor {
         val queryBuilder = SQLiteQueryBuilder()
-        queryBuilder.tables = "$NOME_TABELA," +
-                " ${TabelaBDTipoDespesa.NOME_TABELA}," +
-                " ${TabelaBDCarros.NOME_TABELA}" +
-                " WHERE" +
-                " ${TabelaBDTipoDespesa.CAMPO_ID} = $ID_TIPO_DESPESA " +
-                " AND" +
-                " ${TabelaBDCarros.CAMPO_ID} = $ID_CARRO"
+        queryBuilder.tables = "(($NOME_TABELA" +
+                " INNER JOIN ${TabelaBDTipoDespesa.NOME_TABELA} ON ${TabelaBDTipoDespesa.CAMPO_ID} = $ID_TIPO_DESPESA)" +
+                " INNER JOIN ${TabelaBDCarros.NOME_TABELA} ON ${TabelaBDCarros.CAMPO_ID} = $ID_CARRO)"
 
 
         return queryBuilder.query(db, columns, selection, selectionArgs, groupBy, having, orderBy)
