@@ -55,16 +55,7 @@ class InserirUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
             return
         }
 
-        var data : Long = 0
-
-        binding.calendarViewDataUtilizador.setOnDateChangeListener(){
-            calendarView, ano, mes, dia ->
-            val date = Calendar.getInstance()
-            date.set(ano, mes, dia)
-            data = date.timeInMillis
-        }
-
-        val utilizador = Utilizador(nome, data)
+        val utilizador = Utilizador(nome)
 
         val endereco = requireActivity().contentResolver.insert(
             ContentProviderApp.ENDERECO_UTILIZADOR,

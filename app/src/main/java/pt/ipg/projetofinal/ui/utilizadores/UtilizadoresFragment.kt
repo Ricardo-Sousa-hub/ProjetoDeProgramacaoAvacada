@@ -50,7 +50,6 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewUtilizadores.adapter = adapterUtilizadores
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
 
-        //inserirTiposDeCombustivel()
         //inserirModelos()
 
         binding.buttonInserirUtilizador.setOnClickListener() {
@@ -151,8 +150,14 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private fun inserirTiposDeCombustivel(){
 
         val eletricidade = Combustivel("Eletricidade")
+        val gas = Combustivel("Gas")
+        val gasoleo = Combustivel("Gasoleo")
+        val gasolina = Combustivel("Gasolina")
 
         requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_TIPO_COMBUSTIVEL, eletricidade.toContentValues())
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_TIPO_COMBUSTIVEL, gas.toContentValues())
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_TIPO_COMBUSTIVEL, gasoleo.toContentValues())
+        requireContext().contentResolver.insert(ContentProviderApp.ENDERECO_TIPO_COMBUSTIVEL, gasolina.toContentValues())
     }
 
     private fun inserirModelos(){

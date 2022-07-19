@@ -7,20 +7,17 @@ class TabelaBDUtilizadores(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
 
     override fun cria(){
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$NOME TEXT NOT NULL," +
-                "$DATA_NASCIMENTO INTEGER NOT NULL)")
+                "$NOME TEXT NOT NULL)")
     }
 
     companion object{
         const val NOME_TABELA = "utilizadores"
         const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
         const val NOME = "nome"
-        const val DATA_NASCIMENTO = "data_nascimento"
 
         val TODAS_COLUNAS = arrayOf(
             CAMPO_ID,
-            NOME,
-            DATA_NASCIMENTO
+            NOME
         )
     }
 

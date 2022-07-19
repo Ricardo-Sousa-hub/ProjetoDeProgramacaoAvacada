@@ -55,7 +55,7 @@ class BaseDadosTest {
         assertNotEquals(-1, despesa.id)
     }
 
-    @Before
+    @Test
     fun apagarBaseDados(){
         appContext().deleteDatabase(BDAppOpenHelper.NOME)
     }
@@ -74,7 +74,7 @@ class BaseDadosTest {
     fun consegueInserirUtilizador(){
         val db = getWritableDatabase()
 
-        insereUtilizador(db, Utilizador("Ricardo Sousa", 20020625))
+        insereUtilizador(db, Utilizador("Ricardo Sousa"))
 
         db.close()
     }
@@ -83,12 +83,11 @@ class BaseDadosTest {
     fun consegueAlterarUtilizador(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
 
         insereUtilizador(db, utilizador)
 
         utilizador.nome = "Joao"
-        utilizador.data_nascimento = 20020328
 
         val registoAlterado = TabelaBDUtilizadores(db).update(
             utilizador.toContentValues(),
@@ -166,7 +165,7 @@ class BaseDadosTest {
     fun consegueInserirCarro(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
@@ -187,7 +186,7 @@ class BaseDadosTest {
 
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
@@ -246,7 +245,7 @@ class BaseDadosTest {
     fun consegueInserirDespesa(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
@@ -272,7 +271,7 @@ class BaseDadosTest {
     fun consegueAlterarDespesa(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
         insereUtilizador(db, utilizador)
 
         val combustivel = Combustivel("Gasoleo")
@@ -309,7 +308,7 @@ class BaseDadosTest {
     fun consegueLerUtilizadores(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
         insereUtilizador(db, utilizador)
 
         val cursor = TabelaBDUtilizadores(db).query(
@@ -391,7 +390,7 @@ class BaseDadosTest {
 
         val modelo = Modelo("BMW X6", 25062020)
         val combustivel = Combustivel("Gasoleo")
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
 
         insereModelo(db, modelo)
         insereCombustivel(db, combustivel)
@@ -450,7 +449,7 @@ class BaseDadosTest {
     fun consegueLerDespesa(){
         val db = getWritableDatabase()
 
-        val utilizador = Utilizador("Ricardo Sousa", 20020625)
+        val utilizador = Utilizador("Ricardo Sousa")
         val combustivel = Combustivel("Gasoleo")
         val modelo = Modelo("BMW X6", 20200620)
         insereUtilizador(db, utilizador)

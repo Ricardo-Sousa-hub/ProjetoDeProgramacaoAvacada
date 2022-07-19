@@ -50,7 +50,6 @@ class InserirCarroFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_MODELO, null, this)
         LoaderManager.getInstance(this).initLoader(ID_LOADER_TIPO_COMBUSTIVEL, null, this)
-
         utilizador = InserirCarroFragmentArgs.fromBundle(arguments!!).utilizador
 
         binding.textViewCarroPertenceA.text = utilizador.nome
@@ -173,7 +172,6 @@ class InserirCarroFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 intArrayOf(android.R.id.text1),
                 0
             )
-
             binding.spinnerModelo.adapter = adapterModelo
         }
         else{
@@ -185,7 +183,6 @@ class InserirCarroFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 intArrayOf(android.R.id.text2),
                 0
             )
-
             binding.spinnerTipoCombustivel.adapter = adapterTipoCombustivel
         }
 

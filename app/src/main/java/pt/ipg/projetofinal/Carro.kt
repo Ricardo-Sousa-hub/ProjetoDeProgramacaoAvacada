@@ -29,29 +29,35 @@ data class Carro(
         fun fromCursor(cursor: Cursor): Carro {
             val posId = cursor.getColumnIndex(BaseColumns._ID)
             val posData = cursor.getColumnIndex(TabelaBDCarros.DATA)
+
             val posIdTipoCombusivel = cursor.getColumnIndex(TabelaBDCarros.ID_TIPO_COMBUSTIVEL)
             val posNomeTipoCombustivel = cursor.getColumnIndex(TabelaBDTipoCombustivel.NOME_COMBUSTIVEL)
+
             val posIdModelo = cursor.getColumnIndex(TabelaBDCarros.ID_MODELO)
             val posNomeModelo = cursor.getColumnIndex(TabelaBDModelos.NOME_MODELO)
             val posDataModelo = cursor.getColumnIndex(TabelaBDModelos.DATA)
+
             val posIdUtilizador = cursor.getColumnIndex(TabelaBDCarros.ID_UTILIZADOR)
             val posNomeUtilizador = cursor.getColumnIndex(TabelaBDUtilizadores.NOME)
             val posDataUtilizador = cursor.getColumnIndex(TabelaBDUtilizadores.DATA_NASCIMENTO)
 
             val id = cursor.getLong(posId)
             val data = cursor.getLong(posData)
+
             val idTipoCombustivel = cursor.getLong(posIdTipoCombusivel)
             val nomeCombustivel = cursor.getString(posNomeTipoCombustivel)
+
+            val combustivel = Combustivel(nomeCombustivel, idTipoCombustivel)
+
             val idModelo = cursor.getLong(posIdModelo)
             val nomeModelo = cursor.getString(posNomeModelo)
             val dataModelo = cursor.getLong(posDataModelo)
-            val idUtilizador = cursor.getLong(posIdUtilizador)
-            val nomeUtilizador = cursor.getString(posNomeUtilizador)
-            val dataUtilizador = cursor.getLong(posDataUtilizador)
 
             val modelo = Modelo(nomeModelo, dataModelo, idModelo)
 
-            val combustivel = Combustivel(nomeCombustivel, idTipoCombustivel)
+            val idUtilizador = cursor.getLong(posIdUtilizador)
+            val nomeUtilizador = cursor.getString(posNomeUtilizador)
+            val dataUtilizador = cursor.getLong(posDataUtilizador)
 
             val utilizador = Utilizador(nomeUtilizador, dataUtilizador, idUtilizador)
 
