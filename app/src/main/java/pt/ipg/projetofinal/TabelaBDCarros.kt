@@ -28,7 +28,7 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         orderBy: String?
     ): Cursor {
         val queryBuilder = SQLiteQueryBuilder()
-        queryBuilder.tables = "((NOME_TABELA" +
+        queryBuilder.tables = "(($NOME_TABELA" +
                 " INNER JOIN" +
                 " ${TabelaBDModelos.NOME_TABELA} ON ${TabelaBDModelos.CAMPO_ID} = $ID_MODELO)" +
                 " INNER JOIN" +
@@ -43,7 +43,7 @@ class TabelaBDCarros(db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val NOME_TABELA = "carros"
 
         const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
-        const val DATA = "data"
+        const val DATA = "data_compra"
         const val ID_TIPO_COMBUSTIVEL = "id_tipo_combustivel"
         const val ID_MODELO = "id_modelo"
         const val ID_UTILIZADOR = "id_utilizador"

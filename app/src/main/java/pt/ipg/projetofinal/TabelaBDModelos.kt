@@ -15,7 +15,7 @@ class TabelaBDModelos(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val NOME_TABELA = "modelos"
         const val CAMPO_ID = "$NOME_TABELA.${BaseColumns._ID}"
         const val NOME_MODELO = "nome_modelo"
-        const val DATA = "data_compra"
+        const val DATA = "data_lancamento"
 
         val TODAS_COLUNAS = arrayOf(
             CAMPO_ID,

@@ -46,18 +46,18 @@ data class Carro(
             val idTipoCombustivel = cursor.getLong(posIdTipoCombusivel)
             val nomeCombustivel = cursor.getString(posNomeTipoCombustivel)
 
-            val combustivel = Combustivel(nomeCombustivel, idTipoCombustivel)
 
             val idModelo = cursor.getLong(posIdModelo)
             val nomeModelo = cursor.getString(posNomeModelo)
             val dataModelo = cursor.getLong(posDataModelo)
 
-            val modelo = Modelo(nomeModelo, dataModelo, idModelo)
 
             val idUtilizador = cursor.getLong(posIdUtilizador)
             val nomeUtilizador = cursor.getString(posNomeUtilizador)
 
+            val combustivel = Combustivel(nomeCombustivel, idTipoCombustivel)
             val utilizador = Utilizador(nomeUtilizador, idUtilizador)
+            val modelo = Modelo(nomeModelo, dataModelo, idModelo)
 
             return Carro(data, combustivel, modelo, utilizador, id)
         }

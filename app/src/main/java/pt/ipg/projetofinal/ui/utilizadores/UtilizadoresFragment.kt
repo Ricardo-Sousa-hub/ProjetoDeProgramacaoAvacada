@@ -51,6 +51,7 @@ class UtilizadoresFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewUtilizadores.layoutManager = LinearLayoutManager(requireContext())
 
         //inserirModelos()
+        //inserirTiposDeCombustivel()
 
         binding.buttonInserirUtilizador.setOnClickListener() {
             findNavController().navigate(R.id.action_navigation_utilizadores_to_inserirUtilizadorFragment)
